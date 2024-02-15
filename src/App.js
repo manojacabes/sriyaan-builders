@@ -4,9 +4,9 @@ import TopBar from './Main/TopBar';
 import Body from './Main/Body';
 import { Container } from '@mui/material';
 import ProductDetails from './Main/ProductDetails';
-const Register = () => <div>Register Page Content</div>;
-const Login = () => <div>Login Page Content</div>;
-const OtherOption = () => <div>Other Option Page Content</div>;
+// const Register = () => <div>Register Page Content</div>;
+// const Login = () => <div>Login Page Content</div>;
+// const OtherOption = () => <div>Other Option Page Content</div>;
 
 const App = () => {
   return (

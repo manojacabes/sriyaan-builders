@@ -7,7 +7,7 @@ const TopBarMui = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Your Logo
+          Your Logo 13
         </Typography>
         <Button component={Link} to="/register" color="inherit">Register</Button>
         <Button component={Link} to="/login" color="inherit">Login</Button>
