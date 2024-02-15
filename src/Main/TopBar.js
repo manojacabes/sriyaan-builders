@@ -1,19 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'; // Use NavLink for active styling
-import './style.css';
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { Link } from 'react-router-dom'; // If you're using React Router
 
-const TopBar = () => {
+const TopBarMui = () => {
   return (
-    <div className="topbar">
-      <div className="logo">Your Logo</div>
-      <div className="options">
-        <NavLink to="/register">Register</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/other-option">Other Option</NavLink>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Your Logo
+        </Typography>
+        <Button component={Link} to="/register" color="inherit">Register</Button>
+        <Button component={Link} to="/login" color="inherit">Login</Button>
+        <Button component={Link} to="/other-option" color="inherit">Other Option</Button>
         {/* Add more options as needed */}
-      </div>
-    </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 
-export default TopBar;
+export default TopBarMui;
