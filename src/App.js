@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import TopBar from './Main/TopBar';
 
-function App() {
+const Register = () => <div>Register Page Content</div>;
+const Login = () => <div>Login Page Content</div>;
+const OtherOption = () => <div>Other Option Page Content</div>;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This is sriyaan connect 12345443
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <TopBar />
+        <Routes>
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/other-option" component={OtherOption} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
