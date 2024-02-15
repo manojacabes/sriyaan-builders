@@ -109,7 +109,11 @@ const EcommerceHome = () => {
 
     return (
         <div className={classes.root}>
-            <Container style={{ background: '#1a2531', maxWidth: '-webkit-fill-available' }}>
+            <Grid style={{
+                background: '#1a2531',
+                minHeight: '90.8vh',
+                maxWidth: '-webkit-fill-available'
+            }}>
                 <Typography variant="h1" className={classes.title} gutterBottom>
                     Welcome to Our Online Store
                 </Typography>
@@ -117,7 +121,7 @@ const EcommerceHome = () => {
                     Discover a world of amazing products and exclusive deals. Shop with confidence!
                 </Typography>
 
-                {/* Featured Products */}
+                Featured Products
                 <div className={classes.section}>
                     <Typography variant="h4" style={{ color: '#d5b093', margin: '24px', fontFamily: 'cursive' }} gutterBottom>
                         Featured Products
@@ -127,10 +131,14 @@ const EcommerceHome = () => {
                             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
                                 <Card className={classes.card} style={{ borderRadius: '35px', background: '#2f3c4d' }}>
                                     <CardMedia
+                                        component='img'
+                                        height='300px'
                                         className={classes.cardMedia}
                                         image={product.imageUrl}
-                                        title={product.name}
+                                        alt='123'
+                                        // title={product.name}
                                     />
+                                    {/* <img src={product.imageUrl} style={{ width: '20%', height: '20%s' }} alt='322' /> */}
                                     <CardContent className={classes.cardContent}>
                                         <Grid container style={{
                                             display: 'flex', justifyContent: 'space-between',
@@ -165,9 +173,6 @@ const EcommerceHome = () => {
                                             <Button className="button-62" onClick={() => handleCall('9487828735')} startIcon={<CallEndOutlined />} variant="contained" color="primary">
                                                 Call Now
                                             </Button>
-                                            {/* <CallButton className="button-62" phoneNumber={'9487828735'} >
-                                                Call Now
-                                            </CallButton> */}
                                             <Button variant="contained" color="primary">
                                                 Place Order
                                             </Button>
@@ -200,7 +205,7 @@ const EcommerceHome = () => {
                         ))}
                     </Grid>
                 </div> */}
-            </Container>
+            </Grid>
         </div>
     );
 };

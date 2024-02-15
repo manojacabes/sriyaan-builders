@@ -120,7 +120,6 @@ const MainLayout = () => {
                     }}
                     ModalProps={{ keepMounted: true }}
                 >
-                    {/* Sidebar content */}
                     <List>
                         {tabs.map((item, index) => {
                             return (
@@ -132,24 +131,6 @@ const MainLayout = () => {
                                 </ListItem>
                             )
                         })}
-                        {/* <ListItem button component={Link} style={path === '/home' ? { background: '#ea4e25' } : { background: '#1a2531', color: '#ffffff' }} to="/home" onClick={handleDrawerClose}>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Home" />
-                        </ListItem>
-                        <ListItem button component={Link} style={path === '/work' ? { background: '#ea4e25' } : { background: '#1a2531', color: '#ffffff' }} to="/work" onClick={handleDrawerClose}>
-                            <ListItemIcon>
-                                <WorkIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Work" />
-                        </ListItem>
-                        <ListItem button component={Link} style={path === '/contact' ? { background: '#ea4e25' } : { background: '#1a2531', color: '#ffffff' }} to="/contact" onClick={handleDrawerClose}>
-                            <ListItemIcon>
-                                <ContactMailIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Contact" />
-                        </ListItem> */}
                     </List>
                 </Drawer>
 
