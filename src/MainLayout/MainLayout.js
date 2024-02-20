@@ -10,6 +10,7 @@ import Home from './Home';
 import Homelayout from './HomeLayout';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import MultiStepForm from './JobApply';
+import LoginScreen from './login';
 
 // Components for different types of content
 // const HomePage = () => (
@@ -80,6 +81,7 @@ const MainLayout = () => {
         { key: 3, name: '/orders', label: 'My Orders', active: activeIndex === 3 ? true : false, icon: <SettingsApplications /> },
         { key: 4, name: '/about', label: 'About Us', active: activeIndex === 4 ? true : false, icon: <BookOnline /> },
         { key: 5, name: '/career', label: 'Careers', active: activeIndex === 5 ? true : false, icon: <JoinFullOutlined /> }
+        // { key: 6, name: '/login', label: 'Careers', active: activeIndex === 5 ? true : false, icon: <JoinFullOutlined /> }
     ]
     const handleSetModule = (index) => {
         setActiveIndex(index)
@@ -138,6 +140,8 @@ const MainLayout = () => {
                     <Toolbar />
                     <Container style={{ padding: 0 }} maxWidth="xl">
                         <Routes>
+{/* 
+                            <Route path="/login" element={<LoginScreen />} /> */}
                             <Route path="/work" element={<WorkPage />} />
                             <Route path="/contact" element={<ContactPage />} />
                             <Route path="/" element={<Home />} />

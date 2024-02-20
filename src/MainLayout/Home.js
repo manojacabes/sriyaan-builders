@@ -3,6 +3,7 @@
 import React from 'react';
 import { styled } from '@mui/system';
 import pic1 from '../Images/pic1.jpg'
+import ReCAPTCHA from 'react-google-recaptcha';
 import pic2 from '../Images/pic2.jpg'
 import pic3 from '../Images/pic3.jpg'
 import './style.css'
@@ -16,6 +17,19 @@ const useStyles = styled((theme) => ({
         textAlign: 'center',
         backgroundColor: '#f5f5f5',
         color: '#333',
+        '&::-webkit-scrollbar': {
+            width: '12px',
+        },
+        '&::-webkit-scrollbar-track': {
+            background: '#f1f1f1',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            background: '#888',
+            borderRadius: '10px',
+        },
+        '&::-webkit-scrollbar-thumb:hover': {
+            background: '#555',
+        },
     },
     section: {
         marginTop: 4,
@@ -106,7 +120,9 @@ const EcommerceHome = () => {
         text: 'Check out this awesome content!',
         url: 'https://example.com'
     };
-
+    const onchange = (value) => {
+        console.log(value, 'value')
+    }
     return (
         <div className={classes.root}>
             <Grid style={{
@@ -126,6 +142,10 @@ const EcommerceHome = () => {
                     <Typography variant="h4" style={{ color: '#d5b093', margin: '24px', fontFamily: 'cursive' }} gutterBottom>
                         Featured Products
                     </Typography>
+                    <ReCAPTCHA
+                        sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
+                        onChange={onchange}
+                    />
                     <Grid container spacing={3}>
                         {featuredProducts.map((product) => (
                             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
@@ -136,7 +156,7 @@ const EcommerceHome = () => {
                                         className={classes.cardMedia}
                                         image={product.imageUrl}
                                         alt='123'
-                                        // title={product.name}
+                                    // title={product.name}
                                     />
                                     {/* <img src={product.imageUrl} style={{ width: '20%', height: '20%s' }} alt='322' /> */}
                                     <CardContent className={classes.cardContent}>
