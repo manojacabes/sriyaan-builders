@@ -18,11 +18,11 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<LoginScreen onLogin={handleLogin} />} />
+        <Route path="/" element={<LoginScreen onLogin={handleLogin} />} />
 
         {isLoggedIn ?
-          <Route path="/" element={<MainLayout />} /> :
-          <Route path="/login" element={<LoginScreen onLogin={handleLogin} />} />
+          <Route path="/dashboard" element={<MainLayout />} /> :
+          <Route path="/" element={<LoginScreen onLogin={handleLogin} />} />
         }
       </Routes>
     </Router>
