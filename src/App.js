@@ -1,31 +1,44 @@
-import React from 'react';
+// App.js
+
+import React, { useState } from 'react';
+import SignUp from './MainLayout/signUp';
+import SignIn from './MainLayout/login';
+import MainLayout from './MainLayout/MainLayout'; // Import your authenticated screen component
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginScreen from './MainLayout/login';
-// import Dashboard from './Dashboard';
-import './App.css';
-import MainLayout from './MainLayout/MainLayout';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Function to handle login
-  const handleLogin = () => {
-    // Your login logic here
-    // Assuming login is successful, set isLoggedIn to true
+  const handleSignUp = (formData) => {
+    // Handle sign-up logic here (e.g., send request to backend API)
+    console.log('Sign-up form data:', formData);
+  };
+
+  const handleSignIn = (formData) => {
+    // Handle sign-in logic here (e.g., send request to backend API)
+    console.log('Sign-in form data:', formData);
+    // Simulating successful sign-in by setting isLoggedIn to true
     setIsLoggedIn(true);
   };
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LoginScreen onLogin={handleLogin} />} />
+    <React.Fragment>
+      <Router>
+        <div>
+          <Routes>
+            {/* Define routes for sign-up, sign-in, and authenticated screens */}
+            <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
 
-        {isLoggedIn ?
-          <Route path="/dashboard" element={<MainLayout />} /> :
-          <Route path="/" element={<LoginScreen onLogin={handleLogin} />} />
-        }
-      </Routes>
-    </Router>
+            <Route path="/signin" element={<SignIn onSignIn={handleSignIn} />} />
+
+            {/* If user is authenticated, render MainLayout component, else redirect to sign-in */}
+            <Route exact path="/" element={isLoggedIn ? <SignIn /> : <SignIn to="/signin" />}>
+
+            </Route>
+          </Routes>
+        </div>
+      </Router>
+    </React.Fragment>
   );
 };
 
