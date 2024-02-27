@@ -1,13 +1,12 @@
 import React, { Children } from 'react';
 import { styled } from '@mui/system';
-import { AppBar, Box, Container, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Container, Drawer, Grid, Button, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 // import WorkIcon from '@mui/icons-material/Work';
 import { Category, TimelineOutlined, SettingsApplications, BookOnline, JoinFullOutlined } from '@mui/icons-material'
 // import ContactMailIcon from '@mui/icons-material/ContactMail';
 import Home from './Home';
-import Layout from './layout';
 import Homelayout from './HomeLayout';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import MultiStepForm from './JobApply';
@@ -44,6 +43,8 @@ const useStyles = styled((theme) => ({
     drawer: {
         width: drawerWidth,
         flexShrink: 0,
+        // backgroundColor: '#a8a8a817',
+        // backdropFilter: 'blur(20px)'
     },
     drawerPaper: {
         width: drawerWidth,
@@ -58,7 +59,7 @@ const useStyles = styled((theme) => ({
     }
 }));
 
-const MainLayout = ({ Children }) => {
+const Layout = ({ children }) => {
     const classes = useStyles();
     const [openDrawer, setOpenDrawer] = React.useState(false);
     const [path, setPath] = React.useState()
@@ -76,12 +77,12 @@ const MainLayout = ({ Children }) => {
     }, [path])
     console.log(path, 'window')
     const tabs = [
-        { key: 0, name: '/dashboard/home', label: 'Home', active: activeIndex === 0 ? true : false, icon: <HomeIcon /> },
-        { key: 1, name: '/categories', label: 'view All Categories', active: activeIndex === 1 ? true : false, icon: <Category /> },
+        { key: 0, name: '/home', label: 'Home', active: activeIndex === 0 ? true : false, icon: <HomeIcon /> },
+        // { key: 1, name: '/categories', label: 'view All Categories', active: activeIndex === 1 ? true : false, icon: <Category /> },
         { key: 2, name: '/requite', label: 'Post Your Requirement', active: activeIndex === 2 ? true : false, icon: <TimelineOutlined /> },
         { key: 3, name: '/orders', label: 'My Orders', active: activeIndex === 3 ? true : false, icon: <SettingsApplications /> },
         { key: 4, name: '/about', label: 'About Us', active: activeIndex === 4 ? true : false, icon: <BookOnline /> },
-        { key: 5, name: '/career', label: 'Careers', active: activeIndex === 5 ? true : false, icon: <JoinFullOutlined /> }
+        // { key: 5, name: '/career', label: 'Careers', active: activeIndex === 5 ? true : false, icon: <JoinFullOutlined /> }
         // { key: 6, name: '/login', label: 'Careers', active: activeIndex === 5 ? true : false, icon: <JoinFullOutlined /> }
     ]
     const handleSetModule = (index) => {
@@ -91,7 +92,7 @@ const MainLayout = ({ Children }) => {
     console.log(window.location, 'location')
     return (
         <Box className={classes.root}>
-            <AppBar position="fixed" className={classes.appBar}>
+            <AppBar position="fixed" style={{ padding: 0 }} className={classes.appBar}>
                 <Toolbar style={{ background: '#384b70' }}>
                     <IconButton
                         color="inherit"
@@ -102,13 +103,22 @@ const MainLayout = ({ Children }) => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" style={{
-                        fontSize: '27px',
-                        fontFamily: 'cursive',
-                        fontWeight: 800
-                    }} noWrap>
-                        Sriyaan Connect
-                    </Typography>
+                    <Grid>
+                        <Typography variant="h6" style={{
+                            fontSize: '27px',
+                            fontFamily: 'inherit',
+                            fontWeight: 800,
+                            
+                        }} noWrap>
+                            Sriyaan Connect
+                        </Typography>
+                    </Grid>
+                    {/* <Grid>
+                        <Button color="inherit">Home</Button>
+                        <Button color="inherit">Requite Your Employes</Button>
+                        <Button color="inherit">My Orders</Button>
+                        <Button color="inherit"></Button>
+                    </Grid> */}
                 </Toolbar>
             </AppBar>
 
@@ -121,16 +131,20 @@ const MainLayout = ({ Children }) => {
                 classes={{
                     paper: classes.drawerPaper,
                 }}
+                style={{
+                    backgroundColor: '#a8a8a817',
+                    backdropFilter: 'blur(20px)'
+                }}
                 ModalProps={{ keepMounted: true }}
             >
-                <List>
+                <List style={{ padding: 0, }}>
                     {tabs.map((item, index) => {
                         return (
-                            <ListItem button component={Link} style={activeIndex === index ? { background: '#ea4e25' } : { background: '#1a2531', color: '#ffffff' }} to={item.name} onClick={() => handleSetModule(index)}>
-                                <ListItemIcon style={{ color: '#ffffff' }}>
+                            <ListItem button component={Link} style={activeIndex === index ? { background: '#ffffff', color: '#2423d5' } : { background: '#ffffff', color: '#384b70' }} to={item.name} onClick={() => handleSetModule(index)}>
+                                <ListItemIcon style={activeIndex === index ? { color: '#2423d5' } : { color: '#384b70' }}>
                                     {item.icon}
                                 </ListItemIcon>
-                                <ListItemText primary={item?.label} />
+                                <ListItemText primary={item?.label} style={activeIndex === index ? { fontSize: '10px !important', color: '#2423d5' } : { color: '#384b70' }} />
                             </ListItem>
                         )
                     })}
@@ -140,20 +154,11 @@ const MainLayout = ({ Children }) => {
             <Box component="main" className={classes.content}>
                 <Toolbar />
                 <Container style={{ padding: 0 }} maxWidth="xl">
-                    <Home />
-                    {/* <Routes>
-                            <Route path="/work" element={<WorkPage />} />
-                            <Route path="/contact" element={<ContactPage />} />
-                            <Route path="/" element={<Home />} />
-                            <Route path="/requite" element={<MultiStepForm />} />
-                            <Route path="/home" element={<Homelayout />} />
-
-                        </Routes> */}
+                    <main>{children}</main>
                 </Container>
             </Box>
         </Box>
-
     );
 };
 
-export default MainLayout;
+export default Layout;

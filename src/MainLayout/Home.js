@@ -126,7 +126,7 @@ const EcommerceHome = () => {
     return (
         <div className={classes.root}>
             <Grid style={{
-                background: '#1a2531',
+                background: '#eaeff8',
                 minHeight: '90.8vh',
                 maxWidth: '-webkit-fill-available'
             }}>
@@ -142,11 +142,11 @@ const EcommerceHome = () => {
                     <Typography variant="h4" style={{ color: '#d5b093', margin: '24px', fontFamily: 'cursive' }} gutterBottom>
                         Featured Products
                     </Typography>
-                    <ReCAPTCHA
+                    {/* <ReCAPTCHA
                         sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
                         onChange={onchange}
-                    />
-                    <Grid container spacing={3}>
+                    /> */}
+                    {/* <Grid container spacing={3}>
                         {featuredProducts.map((product) => (
                             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
                                 <Card className={classes.card} style={{ borderRadius: '35px', background: '#2f3c4d' }}>
@@ -156,9 +156,7 @@ const EcommerceHome = () => {
                                         className={classes.cardMedia}
                                         image={product.imageUrl}
                                         alt='123'
-                                    // title={product.name}
                                     />
-                                    {/* <img src={product.imageUrl} style={{ width: '20%', height: '20%s' }} alt='322' /> */}
                                     <CardContent className={classes.cardContent}>
                                         <Grid container style={{
                                             display: 'flex', justifyContent: 'space-between',
@@ -201,7 +199,7 @@ const EcommerceHome = () => {
                                 </Card>
                             </Grid>
                         ))}
-                    </Grid>
+                    </Grid> */}
                 </div>
 
                 {/* <div className={classes.section}>
