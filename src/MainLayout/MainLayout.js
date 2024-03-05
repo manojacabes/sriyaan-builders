@@ -6,7 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 // import WorkIcon from '@mui/icons-material/Work';
 import { Category, TimelineOutlined, SettingsApplications, BookOnline, JoinFullOutlined } from '@mui/icons-material'
 // import ContactMailIcon from '@mui/icons-material/ContactMail';
-import Home from './Home';
+import Home from './HomeContent/Home';
 import Layout from './layout';
 import Homelayout from './HomeLayout';
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
