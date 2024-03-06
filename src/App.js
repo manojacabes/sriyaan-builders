@@ -10,9 +10,7 @@ import Home from './MainLayout/HomeContent/Home';
 import MultiStepForm from './MainLayout/JobApply';
 import Homelayout from './MainLayout/HomeLayout';
 import LayoutComponent from './MainLayout/layout';
-import MainLayout from './MainLayout/MainLayout'; // Import your authenticated screen component
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PrivateRouteWithLayout from './MainLayout/PrivateRouteWithLayout'
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
