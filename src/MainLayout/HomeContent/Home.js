@@ -6,13 +6,22 @@ import pic1 from '../../Images/pic1.jpg'
 import ReCAPTCHA from 'react-google-recaptcha';
 import pic2 from '../../Images/pic2.jpg'
 import { SnackbarProvider, enqueueSnackbar } from 'notistack';
+import bedSlide from '../../Images/bedRoom.jpg'
+import bath from '../../Images/bath.jpg';
+import kitchen from '../../Images/kitchen.jpg';
+import gym from '../../Images/gym.jpg'
+import steelWorks from '../../Images/steelWorks.jpg'
+import steelCut from '../../Images/steelCut.jpg'
+import offerBan from '../../Images/offerBanner.jpg'
 import { fetchData, postData, getProductList } from '../../Services/Service';
 import pic3 from '../../Images/pic3.jpg'
+import ret from '../../Images/1725.jpg'
+import ReactCardSlider from 'react-card-slider-component';
 import StarRatings from 'react-star-ratings';
 import Rating from '@mui/material/Rating';
 import './style.css'
 import { CallEndOutlined, Share } from '@mui/icons-material'
-import { Container, Typography, Button, Grid, Card, CardMedia, CardContent } from '@mui/material';
+import { Container, Typography, CardActionArea, Button, Grid, Card, CardMedia, CardContent } from '@mui/material';
 // import CallButton from './CallButton';
 
 const useStyles = styled((theme) => ({
@@ -120,6 +129,18 @@ const EcommerceHome = () => {
             console.error('Error sharing:', error);
         }
     };
+    const sliderClick = () => {
+        console.log('item')
+    }
+    const slides = [
+        { image: bedSlide, title: "Bed Room Accessories", description: "Looks good quaity for long life", clickEvent: sliderClick },
+        { image: bath, title: "Bath Room Products", description: "Never swipe at the end", clickEvent: sliderClick },
+        { image: kitchen, title: "Kitchen", description: "Authentic and sensitive", clickEvent: sliderClick },
+        { image: gym, title: "Gym Products", description: "Stay Strong and healthy", clickEvent: sliderClick },
+        { image: steelCut, title: "Laser Cutting Works", description: "Make your work easy", clickEvent: sliderClick },
+        { image: steelWorks, title: "Steel Products and Services", description: "Good Quality Steels", clickEvent: sliderClick },
+        { image: bedSlide, title: "Bed Room", description: "Never swipe at the end", clickEvent: sliderClick },
+    ]
     React.useEffect(() => {
         async function fetchData() {
             try {
@@ -151,7 +172,108 @@ const EcommerceHome = () => {
     }
     return (
         <div className={classes.root}>
-            <Grid style={{
+            <div className='Home1'>
+                <div className='con1'>
+                    <div className='welSri'>
+                        Welcome to Sriyaan Online Store
+                    </div>
+                    <div className='shop1'>
+                        Shopping is a bit of a relaxing hobby for me,which is sometimes troubling for the bank balance
+                    </div>
+                    <div style={{ padding: '10px' }}>
+                        <button className='but1'>
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div className='shopCat'>
+                Shop Our Top Categories
+            </div>
+            <div className='slider1'>
+                <ReactCardSlider slides={slides} />
+            </div>
+            <div className='shopCat'>
+                Products and Services
+            </div>
+            <div style={{ margin: '10px' }}>
+                <Grid container spacing={3}>
+                    {products?.map((product) => (
+                        <>
+                            <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+                                <Card className={classes.card} style={{ borderRadius: '20px', maxWidth: '100%', background: '#ffffff', padding: '0px 10px 15px 10px', boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px ' }}>
+                                    <Grid>
+                                        <img alt='123' src={product.productImage.FRONT_VIEW} />
+                                    </Grid>
+                                    <CardContent style={{ padding: '0px' }}>
+                                        <Typography variant="h6" gutterBottom className='proTitle'>
+                                            {product.productName}
+                                        </Typography>
+                                        <Grid style={{
+                                            display: 'flex',
+                                            justifyContent: 'center'
+                                        }}>
+                                            <Rating
+                                                name="hover-feedback"
+                                                value={product.rating}
+                                                defaultValue={0}
+                                                precision={product.rating}
+                                            />
+                                        </Grid>
+                                        <Typography variant="h6" gutterBottom className='proCost'>
+                                            ${product.orgPrice} <del style={{ color: '#afafaf' }}> ${product.offerPrice}</del>
+                                        </Typography>
+
+
+
+                                        <Grid style={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between'
+                                        }}>
+                                            <Button className='btn1' onClick={() => handleCall('9487828735')} startIcon={<CallEndOutlined />} variant="contained" color="primary">
+                                                Call Now
+                                            </Button>
+                                            <Button className='btn2' onClick={() => handleCall('9487828735')} variant="contained" color="primary">
+                                                Get Price
+                                            </Button>
+                                        </Grid>
+                                    </CardContent>
+                                </Card>
+                            </Grid >
+                        </>
+                    ))}
+
+                </Grid>
+            </div>
+
+            <footer>
+                <div class="container">
+                    <div class="footer-content">
+                        <div class="footer-section about">
+                            <h2>About Us</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="footer-section links">
+                            <h2>Quick Links</h2>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Shop</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">About</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-section contact">
+                            <h2>Contact Us</h2>
+                            <p>Email: example@example.com</p>
+                            <p>Phone: 123-456-7890</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    &copy; 2024 Ecommerce Website
+                </div>
+            </footer>
+            {/* <Grid style={{
                 background: '#ffffff',
                 minHeight: '90.8vh',
                 maxWidth: '-webkit-fill-available'
@@ -166,11 +288,6 @@ const EcommerceHome = () => {
                     Featured Products
                 </Typography>
                 <div style={{ margin: '10px' }}>
-
-                    {/* <ReCAPTCHA
-                        sitekey='6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'
-                        onChange={onchange}
-                    /> */}
                     <Grid container spacing={3}>
                         {products?.map((product) => (
                             <>
@@ -179,10 +296,6 @@ const EcommerceHome = () => {
 
                                         <img alt='123' src={product.productImage.FRONT_VIEW} />
                                         <CardContent style={{ padding: '0px' }}>
-                                            {/* <Grid container style={{
-                                                display: 'flex', justifyContent: 'space-between',
-                                                alignItems: 'center'
-                                            }}> */}
                                             <Typography variant="h6" gutterBottom className='proTitle'>
                                                 {product.productName}
                                             </Typography>
@@ -195,20 +308,11 @@ const EcommerceHome = () => {
                                                     value={product.rating}
                                                     defaultValue={0}
                                                     precision={product.rating}
-                                                // getLabelText={getLabelText}
-                                                // onChange={(event, newValue) => {
-                                                //     setValue(newValue);
-                                                // }}
-                                                // onChangeActive={(event, newHover) => {
-                                                //     setHover(newHover);
-                                                // }}
-                                                // emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                                                 />
                                             </Grid>
                                             <Typography variant="h6" gutterBottom className='proCost'>
                                                 ${product.orgPrice} <del style={{ color: '#afafaf' }}> ${product.offerPrice}</del>
                                             </Typography>
-                                            {/* </Grid> */}
 
 
 
@@ -222,12 +326,6 @@ const EcommerceHome = () => {
                                                 <Button className='btn2' onClick={() => handleCall('9487828735')} variant="contained" color="primary">
                                                     Get Price
                                                 </Button>
-                                                {/* <Button variant="contained" startIcon={<CallEndOutlined />}  className='button-87' color="primary">
-                                                    Call Now
-                                                </Button>
-                                                <Button variant="contained" className='button-87' color="primary">
-                                                    Get Price
-                                                </Button> */}
                                             </Grid>
                                         </CardContent>
                                     </Card>
@@ -237,29 +335,7 @@ const EcommerceHome = () => {
 
                     </Grid>
                 </div>
-
-                {/* <div className={classes.section}>
-                    <Typography variant="h4" gutterBottom>
-                        Explore Categories
-                    </Typography>
-                    <Grid container spacing={3}>
-                        {featuredCategories.map((category) => (
-                            <Grid item key={category} xs={12} sm={6} md={4} lg={3}>
-                                <Card className={classes.card}>
-                                    <CardContent className={classes.cardContent}>
-                                        <Typography variant="h6" gutterBottom className={classes.productTitle}>
-                                            {category}
-                                        </Typography>
-                                        <Button variant="contained" color="primary">
-                                            Explore {category}
-                                        </Button>
-                                    </CardContent>
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </div> */}
-            </Grid >
+            </Grid > */}
 
         </div >
     );

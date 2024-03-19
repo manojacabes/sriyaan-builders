@@ -5,8 +5,95 @@
     color: '#333';
 }
 
+.topTab {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .section {
     margin-top: 4
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.top-bar1 {
+    background-color: #d13737;
+    color: #ff1111;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.top-bar {
+    background-color: #fff;
+    color: #ff1111;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    font-size: 24px;
+}
+
+.heading {
+    font-size: 26px;
+    /* padding: 10px; */
+    font-weight: 700;
+    padding: 3px 17px;
+    color: #163521;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    margin-right: 5px;
+    background-color: #dce0e3b8;
+}
+
+.search button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #dce0e3b8;
+    color: #333;
+    cursor: pointer;
+}
+
+.options a {
+    color: #7e7b7c;
+    text-decoration: none;
+    margin-left: 90px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.content {
+    margin-top: 50px;
+    /* Adjust according to the height of the top bar */
+    /* padding: 20px; */
 }
 
 .title {
@@ -100,4 +187,36 @@
 
 .button-62:not([disabled]):hover {
     box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+@media only screen and (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .search {
+        margin-top: 10px;
+    }
+
+    .search input[type="text"] {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .options {
+        margin-top: 10px;
+    }
+
+    .options a {
+        margin-left: 0;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .content {
+        margin-top: 60px;
+        /* Adjust according to the height of the top bar */
+    }
 }

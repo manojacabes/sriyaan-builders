@@ -3,14 +3,17 @@ import { styled } from '@mui/system';
 import { AppBar, Box, Container, Drawer, Grid, Button, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
+import { useNavigate } from 'react-router-dom';
 // import WorkIcon from '@mui/icons-material/Work';
-import { Category, TimelineOutlined, SettingsApplications, BookOnline, JoinFullOutlined } from '@mui/icons-material'
+import { Category, TimelineOutlined, SettingsApplications, BookOnline, JoinFullOutlined, Call } from '@mui/icons-material'
 // import ContactMailIcon from '@mui/icons-material/ContactMail';
 import Home from './HomeContent/Home';
 import Homelayout from './HomeLayout';
+import logo from '../Images/logo.png'
 import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import MultiStepForm from './JobApply';
 import LoginScreen from './login';
+import './style.css'
 
 // Components for different types of content
 // const HomePage = () => (
@@ -67,7 +70,7 @@ const Layout = ({ children }) => {
     const handleDrawerOpen = () => {
         setOpenDrawer(true);
     };
-
+    const navigate = useNavigate()
     const handleDrawerClose = () => {
         setOpenDrawer(false);
     };
@@ -89,74 +92,55 @@ const Layout = ({ children }) => {
         setActiveIndex(index)
         setOpenDrawer(false);
     }
-    console.log(window.location, 'location')
+    console.log(window.location.pathname, 'location')
     return (
         <Box className={classes.root}>
-            <AppBar position="fixed" style={{ padding: 0 }} className={classes.appBar}>
-                <Toolbar style={{ background: '#033772' }}>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={{ marginRight: '36px', ...(openDrawer && { display: 'none' }) }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Grid>
-                        <Typography variant="h6" style={{
-                            fontSize: '27px',
-                            fontFamily: 'inherit',
-                            fontWeight: 800,
-                            
-                        }} noWrap>
-                            Sriyaan Connect
-                        </Typography>
-                    </Grid>
-                    {/* <Grid>
-                        <Button color="inherit">Home</Button>
-                        <Button color="inherit">Requite Your Employes</Button>
-                        <Button color="inherit">My Orders</Button>
-                        <Button color="inherit"></Button>
-                    </Grid> */}
-                </Toolbar>
-            </AppBar>
 
-            <Drawer
-                className={classes.drawer}
-                variant="temporary"
-                anchor="left"
-                open={openDrawer}
-                onClose={handleDrawerClose}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-                style={{
-                    backgroundColor: '#a8a8a817',
-                    backdropFilter: 'blur(20px)'
-                }}
-                ModalProps={{ keepMounted: true }}
-            >
-                <List style={{ padding: 0, }}>
-                    {tabs.map((item, index) => {
-                        return (
-                            <ListItem button component={Link} style={activeIndex === index ? { background: '#ffffff', color: '#2423d5' } : { background: '#ffffff', color: '#384b70' }} to={item.name} onClick={() => handleSetModule(index)}>
-                                <ListItemIcon style={activeIndex === index ? { color: '#2423d5' } : { color: '#384b70' }}>
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={item?.label} style={activeIndex === index ? { fontSize: '10px !important', color: '#2423d5' } : { color: '#384b70' }} />
-                            </ListItem>
-                        )
-                    })}
-                </List>
-            </Drawer>
+            <div class="top-bar">
+                <div class="logo">
+                    <img src={logo} style={{ width: '37px', height: '37px' }} alt='...' />
+                    <div class="heading">Sriyaan Connect
+                    </div>
+                </div>
+                <div class="options">
+                    <a href="/home"
+                        style={window.location.pathname === '/home' ? {
+                            fontSize: '18px',
+                            color: '#163521',
+                            fontWeight: 800
+                        } : {}}
+                        onClick={() => navigate('/home')}>Home</a>
+                    <a href="/requite"
+                        style={window.location.pathname === '/requite' ? {
+                            fontSize: '18px',
+                            color: '#163521',
+                            fontWeight: 800
+                        } : {}} onClick={() => navigate('/requite')}>Requite your Employes</a>
+                    <a href="/orders"
+                        style={window.location.pathname === '/orders' ? {
+                            fontSize: '18px',
+                            color: '#163521',
+                            fontWeight: 800
+                        } : {}}>My Orders</a>
+                    <a href="/about"
+                        style={window.location.pathname === '/about' ? {
+                            fontSize: '18px',
+                            color: '#163521',
+                            fontWeight: 800
+                        } : {}}>About Us</a>
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="  Enter Here . . ." />
+                    <button>Search</button>
+                </div>
 
-            <Box component="main" className={classes.content}>
-                <Toolbar />
+            </div>
+
+            <div className='content'>
                 <Container style={{ padding: 0 }} maxWidth="xl">
                     <main>{children}</main>
                 </Container>
-            </Box>
+            </div>
         </Box>
     );
 };
