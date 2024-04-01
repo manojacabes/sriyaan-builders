@@ -55,12 +55,12 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
-            <Button onClick={onBack} variant="outlined" color="primary">
+            {/* <Button onClick={onBack} variant="outlined" color="primary">
                 Back
             </Button>
             <Button type="submit" variant="contained" color="primary">
                 Next
-            </Button>
+            </Button> */}
         </form>
     );
 };

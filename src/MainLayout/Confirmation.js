@@ -53,12 +53,12 @@ const Confirmation = ({ data, onBack }) => {
             <Typography variant="body1" gutterBottom>
                 Years of Experience: {experience.years}
             </Typography>
-            <Button onClick={onBack} variant="outlined" color="primary">
+            {/* <Button onClick={onBack} variant="outlined" color="primary">
                 Back
             </Button>
             <Button onClick={handleSubmit} variant="contained" color="primary">
                 Confirm & Submit
-            </Button>
+            </Button> */}
         </div>
     );
 };

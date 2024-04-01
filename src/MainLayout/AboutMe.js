@@ -68,9 +68,9 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 fullWidth
                 margin="normal"
             />
-            <Button type="submit" variant="contained" color="primary">
+            {/* <Button type="submit" variant="contained" color="primary">
                 Next
-            </Button>
+            </Button> */}
         </form>
     );
 };

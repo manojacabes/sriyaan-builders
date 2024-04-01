@@ -46,7 +46,7 @@ function MultiStepForm() {
     };
 
     return (
-        <div>
+        <div style={{ padding: '50px' }}>
             <Stepper activeStep={activeStep} alternativeLabel>
                 {steps.map((label) => (
                     <Step key={label}>

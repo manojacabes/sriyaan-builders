@@ -8,6 +8,7 @@ import SignIn from './MainLayout/login';
 import { ClearIcon } from '@mui/icons-material'
 import Home from './MainLayout/HomeContent/Home';
 import MultiStepForm from './MainLayout/JobApply';
+import MyOrders from './MainLayout/MyOrders/MyOrder'
 import Homelayout from './MainLayout/HomeLayout';
 import LayoutComponent from './MainLayout/layout';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -54,7 +55,7 @@ const App = () => {
               {/* <Route path="/orders" element={<Homelayout />} /> */}
               <Route path="/orders" element={<LayoutComponent>
                 <Routes>
-                  <Route index element={<Homelayout />} />
+                  <Route index element={<MyOrders />} />
                 </Routes>
               </LayoutComponent>}
               />

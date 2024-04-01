@@ -202,7 +202,13 @@ const EcommerceHome = () => {
                         <>
                             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
                                 <Card className={classes.card} style={{ borderRadius: '20px', maxWidth: '100%', background: '#ffffff', padding: '0px 10px 15px 10px', boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px ' }}>
-                                    <Grid>
+                                    <Grid style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        margin: '10px',
+                                        padding: '10px'
+                                    }}>
                                         <img alt='123' src={product.productImage.FRONT_VIEW} />
                                     </Grid>
                                     <CardContent style={{ padding: '0px' }}>
