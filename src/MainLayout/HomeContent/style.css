@@ -7,8 +7,76 @@
     font-family: "Mona Sans", "Helvetica Neue", "Helvetica", " Arial", "sans-serif" !important;
 }
 
+.container1 {
+    width: 300px;
+    /* Set the width of the div */
+    height: 300px;
+    /* Set the height of the div */
+    border: 1px solid #e3dcdc;
+    /* Optional: Add border for visibility */
+    overflow: hidden;
+    /* Optional: Hide overflow content */
+    position: relative;
+    /* Required for absolute positioning of the image */
+    border-radius: 15px;
+    margin: 15px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.container1 img {
+    width: 100%;
+    /* Set the width of the image to 100% of the div's width */
+    height: 100%;
+    /* Set the height of the image to 100% of the div's height */
+    object-fit: cover;
+    /* Cover the entire area of the div while maintaining aspect ratio */
+    position: absolute;
+    /* Position the image within the div */
+    top: 0;
+    /* Position the image at the top of the div */
+    left: 0;
+    /* Position the image at the left of the div */
+}
+
+/* CSS */
+.button-63 {
+    align-items: center;
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+    border: 0;
+    border-radius: 30px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 14px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 12px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.button-63:active,
+.button-63:hover {
+    outline: 0;
+}
+
+@media (min-width: 768px) {
+    .button-63 {
+        /* font-size: 24px; */
+        /* min-width: 196px; */
+    }
+}
+
 .Home1 {
-    background: url('../../Images/shop1.jpg');
+    background: url('../../Images/tech2.jpg');
     background-color: #ff7e5f;
     color: white;
     padding: 20px;
@@ -324,11 +392,13 @@
 }
 
 .welSri {
-    font-size: 42px;
-    font-family: 'Poppins';
+    font-size: 53px;
+    font-family: auto;
     font-weight: 600;
-    color: #163521;
-    padding: 10px;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 9px 28px 1px 82px;
+
 }
 
 .con1 {
@@ -339,7 +409,8 @@
 }
 
 .shop1 {
-    padding: 10px;
+    padding: 3px 90px;
+    font-family: math;
 }
 
 .but1 {
@@ -431,13 +502,20 @@ a:hover {
     /* Change link color on hover */
 }
 
+::-webkit-scrollbar {
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: hide scrollbar track */
+}
+
 footer {
     background-color: #333;
     color: #fff;
     padding: 20px 0;
 }
 
-.container {
+.container2 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -491,11 +569,13 @@ footer {
     }
 
     .welSri {
-        font-size: 25px;
-        font-family: 'Poppins';
+        font-size: 53px;
+        font-family: auto;
         font-weight: 600;
-        color: #163521;
-        padding: 10px;
+        text-transform: uppercase;
+        color: #ffffff;
+        padding: 9px 28px 1px 82px;
+
     }
 
     .con1 {
@@ -516,7 +596,8 @@ footer {
     }
 
     .shop1 {
-        padding: 10px;
+        padding: 3px 90px;
+        font-family: math;
     }
 
     .but1 {

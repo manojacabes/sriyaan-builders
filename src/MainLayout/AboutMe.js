@@ -47,6 +47,27 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 margin="normal"
             />
             <TextField
+                name="gender"
+                label="Gender"
+                variant="outlined"
+                value={formData.gender}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                name="mobileNumber"
+                label="Phone Number"
+                type="number"
+                variant="outlined"
+                value={formData.mobileNumber}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
                 name="email"
                 label="Email"
                 type="email"
@@ -54,6 +75,17 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                name="address"
+                label="Address"
+                multiline
+                rows={2}
+                variant="outlined"
+                value={formData.address}
+                onChange={handleChange}
                 fullWidth
                 margin="normal"
             />

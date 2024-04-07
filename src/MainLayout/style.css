@@ -10,7 +10,10 @@
     flex-direction: row;
     justify-content: space-around;
 }
-
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: hide scrollbar track */
+}
 .section {
     margin-top: 4
 }

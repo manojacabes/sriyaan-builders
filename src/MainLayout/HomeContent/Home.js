@@ -16,6 +16,7 @@ import offerBan from '../../Images/offerBanner.jpg'
 import { fetchData, postData, getProductList } from '../../Services/Service';
 import pic3 from '../../Images/pic3.jpg'
 import ret from '../../Images/1725.jpg'
+import tech1 from '../../Images/tech1.png'
 import ReactCardSlider from 'react-card-slider-component';
 import StarRatings from 'react-star-ratings';
 import Rating from '@mui/material/Rating';
@@ -170,18 +171,55 @@ const EcommerceHome = () => {
     const onchange = (value) => {
         console.log(value, 'value')
     }
+    const handlePlaceOrder = async () => {
+        try {
+            let body = {
+                "address": {
+                    "blockNo": "string",
+                    "city": "string",
+                    "country": "string",
+                    "districk": "string",
+                    "name": "string",
+                    "optionalPhoneNo": "string",
+                    "phoneNo": "string",
+                    "state": "string",
+                    "street": "string"
+                },
+                "emailId": "manojkm11301@gmail.com",
+                "orderName": "test",
+                "orderNotes": "string",
+                "productDetails": {
+                    "products": {
+                        "additionalProp1": "string",
+                        "additionalProp2": "string",
+                        "additionalProp3": "string"
+                    }
+                }
+            }
+            const response = await postData('http://localhost:8082/kit/product-purchase/v1/initiate/order', body);
+            console.log('Response from POST request:', response);
+            if (response?.response === 'SUCCESS') {
+                // navigate('/home', { state: { response: response } });
+                enqueueSnackbar(response?.response, { variant: 'success' })
+            } else {
+                enqueueSnackbar(response?.response, { variant: 'warning' })
+            }
+        } catch (error) {
+            console.error('Error posting data:', error);
+        }
+    }
     return (
         <div className={classes.root}>
             <div className='Home1'>
                 <div className='con1'>
                     <div className='welSri'>
-                        Welcome to Sriyaan Online Store
+                        Welcome to Sriyaan Connects
                     </div>
                     <div className='shop1'>
                         Shopping is a bit of a relaxing hobby for me,which is sometimes troubling for the bank balance
                     </div>
-                    <div style={{ padding: '10px' }}>
-                        <button className='but1'>
+                    <div style={{ padding: '10px 80px' }}>
+                        <button className='button-63'>
                             Learn More
                         </button>
                     </div>
@@ -198,11 +236,11 @@ const EcommerceHome = () => {
             </div>
             <div style={{ margin: '10px' }}>
                 <Grid container spacing={3}>
-                    {products?.map((product) => (
+                    {products?.map((product, index) => (
                         <>
                             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
                                 <Card className={classes.card} style={{ borderRadius: '20px', maxWidth: '100%', background: '#ffffff', padding: '0px 10px 15px 10px', boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px ' }}>
-                                    <Grid style={{
+                                    {/* <Grid style={{
                                         display: 'flex',
                                         justifyContent: 'center',
                                         alignItems: 'center',
@@ -210,7 +248,10 @@ const EcommerceHome = () => {
                                         padding: '10px'
                                     }}>
                                         <img alt='123' src={product.productImage.FRONT_VIEW} />
-                                    </Grid>
+                                    </Grid> */}
+                                    <div class="container1">
+                                        <img src={product.productImage.FRONT_VIEW} alt="Example Image" />
+                                    </div>
                                     <CardContent style={{ padding: '0px' }}>
                                         <Typography variant="h6" gutterBottom className='proTitle'>
                                             {product.productName}
@@ -239,8 +280,8 @@ const EcommerceHome = () => {
                                             <Button className='btn1' onClick={() => handleCall('9487828735')} startIcon={<CallEndOutlined />} variant="contained" color="primary">
                                                 Call Now
                                             </Button>
-                                            <Button className='btn2' onClick={() => handleCall('9487828735')} variant="contained" color="primary">
-                                                Get Price
+                                            <Button className='btn2' onClick={() => handlePlaceOrder(index)} variant="contained" color="primary">
+                                                Place Order
                                             </Button>
                                         </Grid>
                                     </CardContent>
@@ -253,7 +294,7 @@ const EcommerceHome = () => {
             </div>
 
             <footer>
-                <div class="container">
+                <div class="container2">
                     <div class="footer-content">
                         <div class="footer-section about">
                             <h2>About Us</h2>

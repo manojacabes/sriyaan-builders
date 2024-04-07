@@ -115,7 +115,7 @@ const Layout = ({ children }) => {
                             fontSize: '18px',
                             color: '#163521',
                             fontWeight: 800
-                        } : {}} onClick={() => navigate('/requite')}>Requite your Employes</a>
+                        } : {}} onClick={() => navigate('/requite')}>Join Our team</a>
                     <a href="/orders"
                         style={window.location.pathname === '/orders' ? {
                             fontSize: '18px',

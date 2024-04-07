@@ -259,9 +259,9 @@ const LoginScreen = () => {
         //         </form>
         //     </Grid>
         // </Container>
-        <Grid className="container">
+        <Grid className="container" >
             <Grid className="login__content">
-                <img src={backgrd} alt="login image" className="login__img" />
+                {/* <img src={backgrd} alt="login image" className="login__img" /> */}
 
                 <form action="" className="login__form" >
                     <Grid>

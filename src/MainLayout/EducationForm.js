@@ -34,6 +34,26 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+             <TextField
+                name="tenPercent"
+                label="!0th Percentage"
+                variant="outlined"
+                value={formData.tenPercent}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                name="twoPercent"
+                label="12th Percentage"
+                variant="outlined"
+                value={formData.twoPercent}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
             <TextField
                 name="institution"
                 label="Institution"
@@ -52,6 +72,17 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
                 value={formData.graduationYear}
                 onChange={handleChange}
                 required
+                fullWidth
+                margin="normal"
+            />
+             <TextField
+                name="skillSet"
+                label="Skill Set"
+                multiline
+                rows={2}
+                variant="outlined"
+                value={formData.skillSet}
+                onChange={handleChange}
                 fullWidth
                 margin="normal"
             />
