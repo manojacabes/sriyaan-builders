@@ -48,11 +48,11 @@ const useStyles = styled((theme) => ({
 }));
 // Define the order status data
 const orderStatusData = [
-    { label: 'Order Placed', description: 'Your order has been placed.' },
-    { label: 'Processing', description: 'We are processing your order.' },
-    { label: 'Started Manufacturing', description: 'Your order has been started manufacturing.' },
-    { label: 'Ended Manufacturing', description: 'Your order has been Ended manufacturing.' },
-    { label: 'Ready for Delivery', description: 'Your order has been Ready to pick up.' },
+    { label: 'Order Placed', value: "INITIATED", description: 'Your order has been placed.' },
+    { label: 'Processing', value: "PENDING_INQUIRY", description: 'We are processing your order.' },
+    { label: 'Manufacturing', value: "IN_PROGRESS", description: 'Your order has been started to manufacturing.' },
+    { label: 'Ready for Delivery', value: "OUT_FOR_DELIVERY", description: 'Your order has been Ready to pick up.' },
+    { label: 'Delivered', value: "DELIVERED", description: 'Your order has been Ready to pick up.' },
 ];
 
 const OrdersScreen = () => {
@@ -62,13 +62,17 @@ const OrdersScreen = () => {
     const [products, setProducts] = React.useState([])
     React.useEffect(() => {
         async function fetchData() {
-            try {
-                const response = await getOrdersList('http://localhost:8082/kit/product-purchase/v1/?page=0&size=100');
-                console.log(response, 'res')
-                setProducts(response?.content)
-            } catch (error) {
-                console.error('Error posting data:', error);
+            let emailData = localStorage.getItem('user')
+            if (emailData) {
+                try {
+                    const response = await getOrdersList(`http://localhost:8082/kit/product-purchase/v1/?email-id=${emailData}&page=0&size=100`);
+                    console.log(response, 'res')
+                    setProducts(response?.content)
+                } catch (error) {
+                    console.error('Error posting data:', error);
+                }
             }
+
         }
         fetchData()
     }, [])
@@ -76,14 +80,27 @@ const OrdersScreen = () => {
     return (
         <Container maxWidth="md" className="orders" style={{ padding: "30px" }}>
             {products?.map((item) => {
+                console.log(item, 'items')
                 return (
                     <Grid className='orderData'>
                         <Grid>
-                            <Typography variant="body1" style={{ marginTop: '20px' }}>
+                            <Typography variant="body1" style={{ marginTop: '20px', color: '#fff', fontWeight: 800 }}>
                                 Order details
                             </Typography>
+                            <Typography variant="body1" style={{ marginTop: '10px' }}>
+                                Order Id:<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.orderId}</strong>
+                            </Typography>
+                            <Typography variant="body1" style={{ marginTop: '10px' }}>
+                                Product Name:<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.productDetails.products.productName}</strong>
+                            </Typography>
+                            <Typography variant="body1" style={{ marginTop: '10px' }}>
+                                Price Amount  :<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.productDetails.products.offerPrice}</strong>
+                            </Typography>
                         </Grid>
-                        <Stepper style={{ padding: "25px" }} className={classes.stepper} activeStep={currentOrderStatusIndex} alternativeLabel>
+                        <Stepper style={{ padding: "25px" }} className={classes.stepper} activeStep={
+                            item?.deliveryStatus === 'PENDING_INQUIRY' ? 1 : item?.deliveryStatus === 'IN_PROGRESS' ? 2 :
+                                item?.deliveryStatus === 'OUT_FOR_DELIVERY' ? 3 : item?.deliveryStatus === 'DELIVERED' ? 5 : 1
+                        } alternativeLabel>
                             {orderStatusData.map((status, index) => (
                                 <Step key={status.label}>
                                     <StepLabel>{status.label}</StepLabel>
@@ -93,9 +110,9 @@ const OrdersScreen = () => {
                         {/* <Typography variant="body1" style={{ marginTop: '20px' }}>
                             {orderStatusData[currentOrderStatusIndex].description}
                         </Typography> */}
-                        <Typography variant="body1" style={{ marginTop: '20px' }}>
+                        {/* <Typography variant="body1" style={{ marginTop: '20px' }}>
                             {item.deliveryStatus}
-                        </Typography>
+                        </Typography> */}
                     </Grid>
                 )
             })

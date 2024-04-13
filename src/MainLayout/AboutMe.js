@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Typography } from '@mui/material';
 
-const AboutMeForm = ({ onNext, onSave }) => {
-    const [formData, setFormData] = useState({
-        name: '',
-        age: '',
-        email: '',
-        bio: '',
-    });
+const AboutMeForm = ({ onNext, formData, setFormData, onSave }) => {
+    // const [formData, setFormData] = useState({
+    //     name: '',
+    //     age: '',
+    //     email: '',
+    //     bio: '',
+    // });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,10 +24,12 @@ const AboutMeForm = ({ onNext, onSave }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='formData' onSubmit={handleSubmit}>
+            <Typography className='label1'>Name</Typography>
             <TextField
                 name="name"
-                label="Name"
+                // label="Name"
+                style={{ borderRadius: '15px !important' }}
                 variant="outlined"
                 value={formData.name}
                 onChange={handleChange}
@@ -35,9 +37,10 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Age</Typography>
             <TextField
                 name="age"
-                label="Age"
+                // label="Age"
                 type="number"
                 variant="outlined"
                 value={formData.age}
@@ -46,9 +49,10 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Gender</Typography>
             <TextField
                 name="gender"
-                label="Gender"
+                // label="Gender"
                 variant="outlined"
                 value={formData.gender}
                 onChange={handleChange}
@@ -56,9 +60,10 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Phone Number</Typography>
             <TextField
                 name="mobileNumber"
-                label="Phone Number"
+                // label="Phone Number"
                 type="number"
                 variant="outlined"
                 value={formData.mobileNumber}
@@ -67,9 +72,10 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Email</Typography>
             <TextField
                 name="email"
-                label="Email"
+                // label="Email"
                 type="email"
                 variant="outlined"
                 value={formData.email}
@@ -78,9 +84,10 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Address</Typography>
             <TextField
                 name="address"
-                label="Address"
+                // label="Address"
                 multiline
                 rows={2}
                 variant="outlined"
@@ -89,9 +96,9 @@ const AboutMeForm = ({ onNext, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Bio</Typography>
             <TextField
                 name="bio"
-                label="Bio"
                 multiline
                 rows={4}
                 variant="outlined"

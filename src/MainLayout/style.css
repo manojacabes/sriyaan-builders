@@ -10,10 +10,14 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: hide scrollbar track */
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: hide scrollbar track */
 }
+
 .section {
     margin-top: 4
 }
@@ -24,7 +28,7 @@ body {
 }
 
 .top-bar1 {
-    background-color: #d13737;
+    background-color: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     color: #ff1111;
     padding: 10px 20px;
     display: flex;
@@ -36,14 +40,64 @@ body {
     width: 100%;
 }
 
+.label1 {
+    color: #ffffff;
+    font-family: ui-serif !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+
+}
+
+.label2 {
+    color: #d5c6c6;
+    font-family: ui-serif !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+
+}
+
+.label3 {
+    color: #ffffff;
+    font-family: ui-serif !important;
+    font-size: 20px !important;
+    font-weight: 600 !important;
+
+}
+
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root {
+    border-radius: 15px !important;
+}
+
+
+
+.formData {
+    padding: 25px;
+    background: linear-gradient(45deg, #d3c348, #7c2ebd);
+    border-radius: 15px;
+}
+
+.confirmBox {
+    margin: 30px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: green;
+    font-size: 31px;
+    border-radius: 20px;
+    background: #72cf7b;
+
+}
+
 .top-bar {
-    background-color: #fff;
+    background: linear-gradient(144deg, #d9d03b, #aa5cb5 50%, #5d0fc3) !important;
     color: #ff1111;
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -86,11 +140,12 @@ body {
 }
 
 .options a {
-    color: #7e7b7c;
+    color: #FFFFFF;
     text-decoration: none;
-    margin-left: 90px;
-    font-size: 15px;
+    margin-left: 100px;
+    font-size: 19px;
     font-weight: 400;
+    font-family: auto;
 }
 
 .content {
@@ -147,6 +202,14 @@ body {
 .productPrice {
     font-weight: 'bold';
     color: '#f50057';
+}
+
+.subtitle1 {
+    font-size: 15px;
+    color: #163521;
+    font-weight: 800;
+    font-family: inherit;
+    text-transform: uppercase;
 }
 
 .exploreButton {

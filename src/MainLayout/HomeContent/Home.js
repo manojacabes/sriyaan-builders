@@ -1,6 +1,6 @@
 // EcommerceHome.js
 
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/system';
 import pic1 from '../../Images/pic1.jpg'
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -11,7 +11,8 @@ import bath from '../../Images/bath.jpg';
 import kitchen from '../../Images/kitchen.jpg';
 import gym from '../../Images/gym.jpg'
 import steelWorks from '../../Images/steelWorks.jpg'
-import steelCut from '../../Images/steelCut.jpg'
+import steelCut from '../../Images/steelCut.jpg';
+import Lottie from 'react-lottie-player'
 import offerBan from '../../Images/offerBanner.jpg'
 import { fetchData, postData, getProductList } from '../../Services/Service';
 import pic3 from '../../Images/pic3.jpg'
@@ -22,7 +23,9 @@ import StarRatings from 'react-star-ratings';
 import Rating from '@mui/material/Rating';
 import './style.css'
 import { CallEndOutlined, Share } from '@mui/icons-material'
-import { Container, Typography, CardActionArea, Button, Grid, Card, CardMedia, CardContent } from '@mui/material';
+import loader from '../loader';
+import lottieJson from '../../Images/Animation - 1712235195558.json'
+import { Container, Typography, Dialog, DialogActions, DialogTitle, DialogContent, CardActionArea, Button, CircularProgress, Grid, Card, CardMedia, CardContent } from '@mui/material';
 // import CallButton from './CallButton';
 
 const useStyles = styled((theme) => ({
@@ -112,9 +115,28 @@ const featuredProducts = [
 ];
 
 //const featuredCategories = ['Electronics', 'Clothing', 'Home & Kitchen', 'Sports & Outdoors'];
-
+const ConfirmOrderDialog = ({ open, onClose, onConfirm }) => {
+    return (
+        <Dialog open={open} onClose={onClose}>
+            <DialogTitle>Confirm Order</DialogTitle>
+            <DialogContent>
+                <p>Are you sure you want to confirm this order?</p>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={onClose} color="primary">
+                    Cancel
+                </Button>
+                <Button onClick={onConfirm} color="primary">
+                    Confirm
+                </Button>
+            </DialogActions>
+        </Dialog>
+    );
+};
 const EcommerceHome = () => {
     const classes = useStyles();
+    const [dialogOpen, setDialogOpen] = useState(false);
+    const [Loading, setLoading] = useState(false)
     const [products, setProducts] = React.useState()
     const handleCall = (phoneNumber) => {
         // Construct the tel URL with the phone number
@@ -145,9 +167,11 @@ const EcommerceHome = () => {
     React.useEffect(() => {
         async function fetchData() {
             try {
+                setLoading(true)
                 const response = await getProductList('http://localhost:8082/kit/product-purchase/v1/product?limit=15');
                 console.log(response, 'res')
                 setProducts(response?.products)
+                setLoading(false)
                 // if (response?.response === 'SUCCESS') {
                 //     enqueueSnackbar(response?.response, { variant: 'success' })
                 // } else {
@@ -171,45 +195,68 @@ const EcommerceHome = () => {
     const onchange = (value) => {
         console.log(value, 'value')
     }
+    const [orderData, setOrderData] = React.useState({})
+    const handleConfirmOrder = (index) => {
+        console.log('Order confirmed');
+        setDialogOpen(true);
+        let productList = products[index]
+
+        console.log(productList, 'productList')
+        setOrderData(productList)
+    };
     const handlePlaceOrder = async () => {
-        try {
-            let body = {
-                "address": {
-                    "blockNo": "string",
-                    "city": "string",
-                    "country": "string",
-                    "districk": "string",
-                    "name": "string",
-                    "optionalPhoneNo": "string",
-                    "phoneNo": "string",
-                    "state": "string",
-                    "street": "string"
-                },
-                "emailId": "manojkm11301@gmail.com",
-                "orderName": "test",
-                "orderNotes": "string",
-                "productDetails": {
-                    "products": {
-                        "additionalProp1": "string",
-                        "additionalProp2": "string",
-                        "additionalProp3": "string"
+        let emailList = localStorage.getItem('user')
+        if (emailList) {
+            try {
+                console.log(orderData, 'orderData')
+                let body = {
+                    "address": {
+                        "blockNo": "string",
+                        "city": "string",
+                        "country": "string",
+                        "districk": "string",
+                        "name": "string",
+                        "optionalPhoneNo": "string",
+                        "phoneNo": "string",
+                        "state": "string",
+                        "street": "string"
+                    },
+                    "emailId": emailList || "",
+                    "orderName": orderData?.productName,
+                    "orderNotes": "string",
+                    "productDetails": {
+                        "products": {
+                            // ...orderData
+                            offer: orderData?.offer,
+                            offerPrice: orderData?.offerPrice,
+                            orgPrice: orderData?.orgPrice,
+                            productId: orderData?.productId,
+                            quantity: orderData?.quantity,
+                            rating: orderData?.rating,
+                            title: orderData?.title,
+                            productName: orderData?.productName,
+                            productDescription: orderData?.productDescription
+                        }
                     }
                 }
+                const response = await postData('http://localhost:8082/kit/product-purchase/v1/initiate/order', body);
+                console.log('Response from POST request:', response);
+                if (response?.response === 'SUCCESS') {
+                    // navigate('/home', { state: { response: response } });
+                    enqueueSnackbar(response?.response, { variant: 'success' })
+                    setDialogOpen(false);
+                } else {
+                    enqueueSnackbar(response?.response, { variant: 'warning' })
+                }
+            } catch (error) {
+                console.error('Error posting data:', error);
             }
-            const response = await postData('http://localhost:8082/kit/product-purchase/v1/initiate/order', body);
-            console.log('Response from POST request:', response);
-            if (response?.response === 'SUCCESS') {
-                // navigate('/home', { state: { response: response } });
-                enqueueSnackbar(response?.response, { variant: 'success' })
-            } else {
-                enqueueSnackbar(response?.response, { variant: 'warning' })
-            }
-        } catch (error) {
-            console.error('Error posting data:', error);
         }
     }
+
     return (
         <div className={classes.root}>
+            {Loading ? loader : ""}
             <div className='Home1'>
                 <div className='con1'>
                     <div className='welSri'>
@@ -220,9 +267,20 @@ const EcommerceHome = () => {
                     </div>
                     <div style={{ padding: '10px 80px' }}>
                         <button className='button-63'>
-                            Learn More
+                            <a href='/about'>Learn More</a>
+
                         </button>
                     </div>
+
+
+                </div>
+                <div>
+                    <Lottie
+                        loop
+                        animationData={lottieJson}
+                        play
+                        style={{ width: 150, height: 150 }}
+                    />
                 </div>
             </div>
             <div className='shopCat'>
@@ -239,7 +297,7 @@ const EcommerceHome = () => {
                     {products?.map((product, index) => (
                         <>
                             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-                                <Card className={classes.card} style={{ borderRadius: '20px', maxWidth: '100%', background: '#ffffff', padding: '0px 10px 15px 10px', boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px ' }}>
+                                <Card className={classes.card} style={{ borderRadius: '20px', maxWidth: '100%', background: '#6600c3', padding: '0px 14px 15px', boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px ' }}>
                                     {/* <Grid style={{
                                         display: 'flex',
                                         justifyContent: 'center',
@@ -253,7 +311,7 @@ const EcommerceHome = () => {
                                         <img src={product.productImage.FRONT_VIEW} alt="Example Image" />
                                     </div>
                                     <CardContent style={{ padding: '0px' }}>
-                                        <Typography variant="h6" gutterBottom className='proTitle'>
+                                        <Typography variant="h6" style={{ color: '#ffffff' }} gutterBottom className='proTitle'>
                                             {product.productName}
                                         </Typography>
                                         <Grid style={{
@@ -267,7 +325,7 @@ const EcommerceHome = () => {
                                                 precision={product.rating}
                                             />
                                         </Grid>
-                                        <Typography variant="h6" gutterBottom className='proCost'>
+                                        <Typography variant="h6" style={{ color: '#ffffff' }} gutterBottom className='proCost'>
                                             ${product.orgPrice} <del style={{ color: '#afafaf' }}> ${product.offerPrice}</del>
                                         </Typography>
 
@@ -280,7 +338,7 @@ const EcommerceHome = () => {
                                             <Button className='btn1' onClick={() => handleCall('9487828735')} startIcon={<CallEndOutlined />} variant="contained" color="primary">
                                                 Call Now
                                             </Button>
-                                            <Button className='btn2' onClick={() => handlePlaceOrder(index)} variant="contained" color="primary">
+                                            <Button className='btn2' onClick={() => handleConfirmOrder(index)} variant="contained" color="primary">
                                                 Place Order
                                             </Button>
                                         </Grid>
@@ -297,93 +355,48 @@ const EcommerceHome = () => {
                 <div class="container2">
                     <div class="footer-content">
                         <div class="footer-section about">
-                            <h2>About Us</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h2>Sriyaan Focus</h2>
+                            <p>Shopping is a bit of a relaxing hobby for me,which is sometimes troubling for the bank balance</p>
                         </div>
                         <div class="footer-section links">
                             <h2>Quick Links</h2>
                             <ul>
                                 <li><a href="#">Home</a></li>
-                                <li><a href="#">Shop</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">About</a></li>
+                                <li><a href="/requite">Join Our Team</a></li>
+                                <li><a href="/orders">My Orders</a></li>
+                                <li><a href="/about">About Us</a></li>
                             </ul>
                         </div>
                         <div class="footer-section contact">
                             <h2>Contact Us</h2>
                             <p>Email: example@example.com</p>
-                            <p>Phone: 123-456-7890</p>
+                            <p>Call : 08069857329</p>
                         </div>
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    &copy; 2024 Ecommerce Website
+                    &copy; 2024 Sriyaan Connect Industries
                 </div>
             </footer>
-            {/* <Grid style={{
-                background: '#ffffff',
-                minHeight: '90.8vh',
-                maxWidth: '-webkit-fill-available'
-            }}>
-                <Typography variant="h1" className='HomeHeader' gutterBottom>
-                    Welcome to Our Online Store
-                </Typography>
-                <Typography variant="subtitle1" className='HomeSub' paragraph>
-                    Discover a world of amazing products and exclusive deals. Shop with confidence!
-                </Typography>
-                <Typography variant="h1" className='title1' gutterBottom>
-                    Featured Products
-                </Typography>
-                <div style={{ margin: '10px' }}>
-                    <Grid container spacing={3}>
-                        {products?.map((product) => (
-                            <>
-                                <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-                                    <Card className={classes.card} style={{ borderRadius: '20px', maxWidth: '100%', background: '#ffffff', padding: '0px 10px 15px 10px', boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px ' }}>
-
-                                        <img alt='123' src={product.productImage.FRONT_VIEW} />
-                                        <CardContent style={{ padding: '0px' }}>
-                                            <Typography variant="h6" gutterBottom className='proTitle'>
-                                                {product.productName}
-                                            </Typography>
-                                            <Grid style={{
-                                                display: 'flex',
-                                                justifyContent: 'center'
-                                            }}>
-                                                <Rating
-                                                    name="hover-feedback"
-                                                    value={product.rating}
-                                                    defaultValue={0}
-                                                    precision={product.rating}
-                                                />
-                                            </Grid>
-                                            <Typography variant="h6" gutterBottom className='proCost'>
-                                                ${product.orgPrice} <del style={{ color: '#afafaf' }}> ${product.offerPrice}</del>
-                                            </Typography>
-
-
-
-                                            <Grid style={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between'
-                                            }}>
-                                                <Button className='btn1' onClick={() => handleCall('9487828735')} startIcon={<CallEndOutlined />} variant="contained" color="primary">
-                                                    Call Now
-                                                </Button>
-                                                <Button className='btn2' onClick={() => handleCall('9487828735')} variant="contained" color="primary">
-                                                    Get Price
-                                                </Button>
-                                            </Grid>
-                                        </CardContent>
-                                    </Card>
-                                </Grid >
-                            </>
-                        ))}
-
-                    </Grid>
-                </div>
-            </Grid > */}
-
+            {/* <ConfirmOrderDialog
+                open={dialogOpen}
+                onClose={() => setDialogOpen(false)}
+                onConfirm={handleConfirmOrder}
+            /> */}
+            <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)}>
+                <DialogTitle>Confirm Order</DialogTitle>
+                <DialogContent>
+                    <p>Are you sure you want to confirm this order?</p>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={() => setDialogOpen(false)} color="primary">
+                        Cancel
+                    </Button>
+                    <Button onClick={handlePlaceOrder} color="primary">
+                        Confirm
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div >
     );
 };

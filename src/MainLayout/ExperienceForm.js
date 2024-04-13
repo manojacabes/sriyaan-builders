@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Typography, Button } from '@mui/material';
 
-const ExperienceForm = ({ onNext, onBack, onSave }) => {
-    const [formData, setFormData] = useState({
-        jobTitle: '',
-        company: '',
-        years: '',
-    });
+const ExperienceForm = ({ onNext, formData, setFormData, onBack, onSave }) => {
+    // const [formData, setFormData] = useState({
+    //     jobTitle: '',
+    //     company: '',
+    //     years: '',
+    // });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,10 +23,10 @@ const ExperienceForm = ({ onNext, onBack, onSave }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='formData' onSubmit={handleSubmit}>
+            <Typography className='label1'>Job Title</Typography>
             <TextField
                 name="jobTitle"
-                label="Job Title"
                 variant="outlined"
                 value={formData.jobTitle}
                 onChange={handleChange}
@@ -34,9 +34,9 @@ const ExperienceForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Company Name</Typography>
             <TextField
                 name="company"
-                label="Company"
                 variant="outlined"
                 value={formData.company}
                 onChange={handleChange}
@@ -44,9 +44,9 @@ const ExperienceForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Years of Experience</Typography>
             <TextField
                 name="years"
-                label="Years of Experience"
                 type="number"
                 variant="outlined"
                 value={formData.years}
@@ -55,12 +55,6 @@ const ExperienceForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
-            {/* <Button onClick={onBack} variant="outlined" color="primary"> */}
-                {/* Back
-            </Button>
-            <Button type="submit" variant="contained" color="primary">
-                Next
-            </Button> */}
         </form>
     );
 };

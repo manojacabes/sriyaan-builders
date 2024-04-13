@@ -105,28 +105,32 @@ const Layout = ({ children }) => {
                 <div class="options">
                     <a href="/home"
                         style={window.location.pathname === '/home' ? {
-                            fontSize: '18px',
-                            color: '#163521',
-                            fontWeight: 800
+                            fontSize: '24px',
+                            color: '#ddd136',
+                            fontWeight: 800,
+                            textShadow: '0 0 10px #dcdd2f'
                         } : {}}
                         onClick={() => navigate('/home')}>Home</a>
                     <a href="/requite"
                         style={window.location.pathname === '/requite' ? {
-                            fontSize: '18px',
-                            color: '#163521',
-                            fontWeight: 800
+                            fontSize: '24px',
+                            color: '#ddd136',
+                            fontWeight: 800,
+                            textShadow: '0 0 10px #dcdd2f'
                         } : {}} onClick={() => navigate('/requite')}>Join Our team</a>
                     <a href="/orders"
                         style={window.location.pathname === '/orders' ? {
-                            fontSize: '18px',
-                            color: '#163521',
-                            fontWeight: 800
+                            fontSize: '24px',
+                            color: '#ddd136',
+                            fontWeight: 800,
+                            textShadow: '0 0 10px #dcdd2f'
                         } : {}}>My Orders</a>
                     <a href="/about"
                         style={window.location.pathname === '/about' ? {
-                            fontSize: '18px',
-                            color: '#163521',
-                            fontWeight: 800
+                            fontSize: '24px',
+                            color: '#ddd136',
+                            fontWeight: 800,
+                            textShadow: '0 0 10px #dcdd2f'
                         } : {}}>About Us</a>
                 </div>
                 <div class="search">

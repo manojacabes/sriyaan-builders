@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@mui/material';
+import { TextField, Typography, Button, MenuItem } from '@mui/material';
 
-const EducationForm = ({ onNext, onBack, onSave }) => {
-    const [formData, setFormData] = useState({
-        degree: '',
-        institution: '',
-        graduationYear: '',
-    });
+const EducationForm = ({ onNext, formData, setFormData, onBack, onSave }) => {
+    // const [formData, setFormData] = useState({
+    //     degree: '',
+    //     institution: '',
+    //     graduationYear: '',
+    // });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,20 +23,33 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='formData' onSubmit={handleSubmit}>
+            <Typography className='label1'>Degree</Typography>
             <TextField
                 name="degree"
-                label="Degree"
+                // label="Degree"
                 variant="outlined"
                 value={formData.degree}
                 onChange={handleChange}
                 required
+                select
                 fullWidth
                 margin="normal"
-            />
-             <TextField
+            >
+                {[{ value: 'IT', label: 'IT' }, { value: 'DIPLAMO', label: 'DIPLAMO' }].map((item) => {
+                    return (
+                        <>
+                            <MenuItem value={item.value}>
+                                {item.label}
+                            </MenuItem>
+                        </>
+                    )
+                })}
+            </TextField>
+            <Typography className='label1'>10th Percentage</Typography>
+            <TextField
                 name="tenPercent"
-                label="!0th Percentage"
+                // label="10th Percentage"
                 variant="outlined"
                 value={formData.tenPercent}
                 onChange={handleChange}
@@ -44,9 +57,10 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>12th Percentage</Typography>
             <TextField
                 name="twoPercent"
-                label="12th Percentage"
+                // label="12th Percentage"
                 variant="outlined"
                 value={formData.twoPercent}
                 onChange={handleChange}
@@ -54,9 +68,10 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Institution</Typography>
             <TextField
                 name="institution"
-                label="Institution"
+                // label="Institution"
                 variant="outlined"
                 value={formData.institution}
                 onChange={handleChange}
@@ -64,9 +79,10 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
+            <Typography className='label1'>Graduation Year</Typography>
             <TextField
                 name="graduationYear"
-                label="Graduation Year"
+                // label="Graduation Year"
                 type="number"
                 variant="outlined"
                 value={formData.graduationYear}
@@ -75,9 +91,10 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
-             <TextField
+            <Typography className='label1'>Skill Set</Typography>
+            <TextField
                 name="skillSet"
-                label="Skill Set"
+                // label="Skill Set"
                 multiline
                 rows={2}
                 variant="outlined"
@@ -86,12 +103,6 @@ const EducationForm = ({ onNext, onBack, onSave }) => {
                 fullWidth
                 margin="normal"
             />
-            {/* <Button onClick={onBack} variant="outlined" color="primary">
-                Back
-            </Button>
-            <Button type="submit" variant="contained" color="primary">
-                Next
-            </Button> */}
         </form>
     );
 };

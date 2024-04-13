@@ -16,6 +16,7 @@
     "react-card-slider-component": "^1.0.9",
     "react-dom": "^18.2.0",
     "react-google-recaptcha": "^3.1.0",
+    "react-lottie-player": "^2.0.0",
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
     "react-star-ratings": "^2.3.0",

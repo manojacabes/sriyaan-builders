@@ -8,7 +8,7 @@
 }
 
 .container1 {
-    width: 300px;
+    width: 320px;
     /* Set the width of the div */
     height: 300px;
     /* Set the height of the div */
@@ -19,7 +19,7 @@
     position: relative;
     /* Required for absolute positioning of the image */
     border-radius: 15px;
-    margin: 15px;
+    margin: 8px;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
@@ -77,18 +77,17 @@
 
 .Home1 {
     background: url('../../Images/tech2.jpg');
-    background-color: #ff7e5f;
     color: white;
     padding: 20px;
     background-size: cover;
     background-position: bottom;
     margin: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 95vh;
-    width: 98.9vw;
+    width: 100vw;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 
 
 }
@@ -156,7 +155,7 @@
     font-weight: bold !important;
     line-height: normal !important;
     letter-spacing: 1px !important;
-    border-radius: 2px !important;
+    border-radius: 12px !important;
     background: #fff !important;
     box-shadow: none;
     text-transform: uppercase !important;
@@ -176,7 +175,7 @@
     font-weight: bold !important;
     line-height: normal !important;
     letter-spacing: 1px !important;
-    border-radius: 2px !important;
+    border-radius: 12px !important;
     background: #ffd740 !important;
     box-shadow: none;
     text-transform: uppercase !important;
@@ -423,19 +422,18 @@
 .shopCat {
     display: flex;
     justify-content: center;
-    padding: 40px;
-    font-size: 20px;
-    font-family: system-ui;
+    padding: 24px;
+    font-size: 27px;
+    font-family: math;
     font-weight: 700;
-    color: #163521;
-
+    color: #4a15bf;
 
 }
 
 .slider1 {
     display: flex;
     justify-content: center;
-    background: #f6eaea73;
+    background: #6600c3;
     padding: 20px;
 
 }
@@ -510,7 +508,7 @@ a:hover {
 }
 
 footer {
-    background-color: #333;
+    background: linear-gradient(144deg, #d9d03b, #aa5cb5 50%, #5d0fc3) !important;
     color: #fff;
     padding: 20px 0;
 }
@@ -552,7 +550,7 @@ footer {
 .footer-bottom {
     text-align: center;
     padding-top: 10px;
-    background-color: #222;
+    /* background-color: #222; */
 }
 
 @media (max-width: 480px) {
@@ -588,11 +586,11 @@ footer {
     .shopCat {
         display: flex;
         justify-content: center;
-        padding: 40px;
-        font-size: 20px;
-        font-family: system-ui;
+        padding: 24px;
+        font-size: 27px;
+        font-family: math;
         font-weight: 700;
-        color: #163521;
+        color: #4a15bf;
     }
 
     .shop1 {
@@ -607,7 +605,7 @@ footer {
     .slider1 {
         display: flex;
         justify-content: center;
-        background: #f6eaea73;
+        background: #6600c3;
         padding: 20px;
 
     }

@@ -62,6 +62,7 @@ const LoginScreen = () => {
                 try {
                     const response = await postData('http://localhost:8081/kit/profile/v1/profile/signin', { email: email, password: password });
                     console.log('Response from POST request:', response);
+                    localStorage.setItem('user', email);
                     if (response?.response === 'SUCCESS') {
                         navigate('/home', { state: { response: response } });
                         enqueueSnackbar(response?.response, { variant: 'success' })
@@ -86,23 +87,7 @@ const LoginScreen = () => {
             console.error('Error posting data:', error);
         }
     };
-
-    // const handleLogin = async () => {
-    //     try {
-    //         let data = {
-    //             email: email, password: password
-    //         }
-    //         const response = await postData(data);
-    //         console.log('Response from POST request:', response);
-    //     } catch (error) {
-    //         console.error('Error posting data:', error);
-    //     }
-    // };
     const handleSignUp = async () => {
-        // Navigate to the sign-up page
-        // history.push('/signup');
-        // navigate('/signup');
-
         if (signValue === 1) {
             console.log(formData, 'formData')
             if (formData.email && formData.firstName && formData.lastName && formData.phoneNo && formData.password) {
@@ -129,6 +114,9 @@ const LoginScreen = () => {
             setSignValue(1)
         }
     };
+    React.useEffect(() => {
+        localStorage.removeItem('user');
+    }, [])
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({

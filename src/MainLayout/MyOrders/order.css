@@ -4,18 +4,29 @@
     flex: 1 1 auto;
     position: absolute;
     top: 12px;
-    left: calc(-55% + 20px) !important;
-    right: calc(45% + 20px) !important;
+    left: calc(-52% + 20px) !important;
+    right: calc(48% + 20px) !important;
 }
 
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+    color: #1976d2 !important;
+}
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+
     color: #3ac346 !important;
+}
+
+.css-1hv8oq8-MuiStepLabel-label.Mui-completed {
+    color: rgb(58 195 70) !important;
+    font-weight: 500 !important;
 }
 
 .orderData {
     padding: 15px;
     border-radius: 20px;
     margin: 28px 20px;
+    background: linear-gradient(45deg, #d7cb41, #c8a56866);
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 

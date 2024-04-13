@@ -39,11 +39,11 @@ const EcommerceHome = () => {
     return (
         <div className={classes.root}>
             <Container>
-                <Typography variant="h1" className={classes.title}>
+                {/* <Typography variant="h1" className={classes.title}>
                     Welcome to Our Online Store
-                </Typography>
+                </Typography> */}
                 <Typography variant="subtitle1" className={classes.subtitle}>
-                    Explore a wide range of products and find the best deals.
+                    Sriyyan Industries - Manufacturer of gym stand, laser cutting services & sheet metal fabrication in Salem, Tamil Nadu.
                 </Typography>
                 <Button variant="contained" color="primary" className={classes.exploreButton}>
                     Explore Now
