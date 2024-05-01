@@ -182,7 +182,22 @@ body {
     } */
 
 }
+.data1 {
+    background: url('../Images/offerBanner.jpg');
+    color: white;
+    padding: 20px;
+    background-size: cover;
+    background-position: bottom;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    height: 95vh;
+    /* width: 100vw; */
+    justify-content: end;
+    align-items: center;
 
+
+}
 .cardMedia {
     padding-top: '75%';
 }

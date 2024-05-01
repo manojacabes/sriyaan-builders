@@ -30,19 +30,16 @@ const EducationForm = ({ onNext, formData, setFormData, onBack, onSave }) => {
                 // label="Degree"
                 variant="outlined"
                 value={formData.degree}
-                onChange={handleChange}
-                required
+                onChange={(e) => handleChange(e)}
                 select
                 fullWidth
                 margin="normal"
             >
-                {[{ value: 'IT', label: 'IT' }, { value: 'DIPLAMO', label: 'DIPLAMO' }].map((item) => {
+                {[{ value: 'ITI', label: 'ITI' }, { value: 'DIPLAMO', label: 'DIPLAMO' }].map((item, index) => {
                     return (
-                        <>
-                            <MenuItem value={item.value}>
-                                {item.label}
-                            </MenuItem>
-                        </>
+                        <MenuItem key={index} value={item.value}>
+                            {item.label}
+                        </MenuItem>
                     )
                 })}
             </TextField>

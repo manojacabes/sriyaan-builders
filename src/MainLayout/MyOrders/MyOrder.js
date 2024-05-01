@@ -79,43 +79,48 @@ const OrdersScreen = () => {
     console.log(products, 'products12')
     return (
         <Container maxWidth="md" className="orders" style={{ padding: "30px" }}>
-            {products?.map((item) => {
-                console.log(item, 'items')
-                return (
-                    <Grid className='orderData'>
-                        <Grid>
-                            <Typography variant="body1" style={{ marginTop: '20px', color: '#fff', fontWeight: 800 }}>
-                                Order details
-                            </Typography>
-                            <Typography variant="body1" style={{ marginTop: '10px' }}>
-                                Order Id:<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.orderId}</strong>
-                            </Typography>
-                            <Typography variant="body1" style={{ marginTop: '10px' }}>
-                                Product Name:<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.productDetails.products.productName}</strong>
-                            </Typography>
-                            <Typography variant="body1" style={{ marginTop: '10px' }}>
-                                Price Amount  :<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.productDetails.products.offerPrice}</strong>
-                            </Typography>
-                        </Grid>
-                        <Stepper style={{ padding: "25px" }} className={classes.stepper} activeStep={
-                            item?.deliveryStatus === 'PENDING_INQUIRY' ? 1 : item?.deliveryStatus === 'IN_PROGRESS' ? 2 :
-                                item?.deliveryStatus === 'OUT_FOR_DELIVERY' ? 3 : item?.deliveryStatus === 'DELIVERED' ? 5 : 1
-                        } alternativeLabel>
-                            {orderStatusData.map((status, index) => (
-                                <Step key={status.label}>
-                                    <StepLabel>{status.label}</StepLabel>
-                                </Step>
-                            ))}
-                        </Stepper>
-                        {/* <Typography variant="body1" style={{ marginTop: '20px' }}>
+            {products.length === 0 ?
+                <Grid>
+                    <Typography>No Orders are available</Typography>
+                </Grid>
+                :
+                products?.map((item) => {
+                    console.log(item, 'items')
+                    return (
+                        <Grid className='orderData'>
+                            <Grid>
+                                <Typography variant="body1" style={{ marginTop: '20px', color: '#fff', fontWeight: 800 }}>
+                                    Order details
+                                </Typography>
+                                <Typography variant="body1" style={{ marginTop: '10px' }}>
+                                    Order Id:<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.orderId}</strong>
+                                </Typography>
+                                <Typography variant="body1" style={{ marginTop: '10px' }}>
+                                    Product Name:<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.productDetails.products.productName}</strong>
+                                </Typography>
+                                <Typography variant="body1" style={{ marginTop: '10px' }}>
+                                    Price Amount  :<strong style={{ color: '#292608', marginLeft: '6px' }}>{item.productDetails.products.offerPrice}</strong>
+                                </Typography>
+                            </Grid>
+                            <Stepper style={{ padding: "25px" }} className={classes.stepper} activeStep={
+                                item?.deliveryStatus === 'PENDING_INQUIRY' ? 1 : item?.deliveryStatus === 'IN_PROGRESS' ? 2 :
+                                    item?.deliveryStatus === 'OUT_FOR_DELIVERY' ? 3 : item?.deliveryStatus === 'DELIVERED' ? 5 : 1
+                            } alternativeLabel>
+                                {orderStatusData.map((status, index) => (
+                                    <Step key={status.label}>
+                                        <StepLabel>{status.label}</StepLabel>
+                                    </Step>
+                                ))}
+                            </Stepper>
+                            {/* <Typography variant="body1" style={{ marginTop: '20px' }}>
                             {orderStatusData[currentOrderStatusIndex].description}
                         </Typography> */}
-                        {/* <Typography variant="body1" style={{ marginTop: '20px' }}>
+                            {/* <Typography variant="body1" style={{ marginTop: '20px' }}>
                             {item.deliveryStatus}
                         </Typography> */}
-                    </Grid>
-                )
-            })
+                        </Grid>
+                    )
+                })
             }
         </Container>
     );

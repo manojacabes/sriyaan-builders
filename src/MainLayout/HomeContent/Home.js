@@ -293,12 +293,16 @@ const EcommerceHome = () => {
                 Products and Services
             </div>
             <div style={{ margin: '10px' }}>
-                <Grid container spacing={3}>
-                    {products?.map((product, index) => (
-                        <>
-                            <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-                                <Card className={classes.card} style={{ borderRadius: '20px', maxWidth: '100%', background: '#6600c3', padding: '0px 14px 15px', boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px ' }}>
-                                    {/* <Grid style={{
+                {products?.length === 0 ?
+                    <Grid container spacing={3} style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
+                        <Typography>Products are not available, please contact support team. </Typography>
+                    </Grid>
+                    : <Grid container spacing={3}>
+                        {products?.map((product, index) => (
+                            <>
+                                <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+                                    <Card className={classes.card} style={{ borderRadius: '20px', maxWidth: '100%', background: '#6600c3', padding: '0px 14px 15px', boxShadow: 'rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px ' }}>
+                                        {/* <Grid style={{
                                         display: 'flex',
                                         justifyContent: 'center',
                                         alignItems: 'center',
@@ -307,48 +311,47 @@ const EcommerceHome = () => {
                                     }}>
                                         <img alt='123' src={product.productImage.FRONT_VIEW} />
                                     </Grid> */}
-                                    <div class="container1">
-                                        <img src={product.productImage.FRONT_VIEW} alt="Example Image" />
-                                    </div>
-                                    <CardContent style={{ padding: '0px' }}>
-                                        <Typography variant="h6" style={{ color: '#ffffff' }} gutterBottom className='proTitle'>
-                                            {product.productName}
-                                        </Typography>
-                                        <Grid style={{
-                                            display: 'flex',
-                                            justifyContent: 'center'
-                                        }}>
-                                            <Rating
-                                                name="hover-feedback"
-                                                value={product.rating}
-                                                defaultValue={0}
-                                                precision={product.rating}
-                                            />
-                                        </Grid>
-                                        <Typography variant="h6" style={{ color: '#ffffff' }} gutterBottom className='proCost'>
-                                            ${product.orgPrice} <del style={{ color: '#afafaf' }}> ${product.offerPrice}</del>
-                                        </Typography>
+                                        <div class="container1">
+                                            <img src={product.productImage.FRONT_VIEW} alt="Example Image" />
+                                        </div>
+                                        <CardContent style={{ padding: '0px' }}>
+                                            <Typography variant="h6" style={{ color: '#ffffff' }} gutterBottom className='proTitle'>
+                                                {product.productName}
+                                            </Typography>
+                                            <Grid style={{
+                                                display: 'flex',
+                                                justifyContent: 'center'
+                                            }}>
+                                                <Rating
+                                                    name="hover-feedback"
+                                                    value={product.rating}
+                                                    defaultValue={0}
+                                                    precision={product.rating}
+                                                />
+                                            </Grid>
+                                            <Typography variant="h6" style={{ color: '#ffffff' }} gutterBottom className='proCost'>
+                                                ${product.orgPrice} <del style={{ color: '#afafaf' }}> ${product.offerPrice}</del>
+                                            </Typography>
 
 
 
-                                        <Grid style={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between'
-                                        }}>
-                                            <Button className='btn1' onClick={() => handleCall('9487828735')} startIcon={<CallEndOutlined />} variant="contained" color="primary">
-                                                Call Now
-                                            </Button>
-                                            <Button className='btn2' onClick={() => handleConfirmOrder(index)} variant="contained" color="primary">
-                                                Place Order
-                                            </Button>
-                                        </Grid>
-                                    </CardContent>
-                                </Card>
-                            </Grid >
-                        </>
-                    ))}
-
-                </Grid>
+                                            <Grid style={{
+                                                display: 'flex',
+                                                justifyContent: 'space-between'
+                                            }}>
+                                                <Button className='btn1' onClick={() => handleCall('9487828735')} startIcon={<CallEndOutlined />} variant="contained" color="primary">
+                                                    Call Now
+                                                </Button>
+                                                <Button className='btn2' onClick={() => handleConfirmOrder(index)} variant="contained" color="primary">
+                                                    Place Order
+                                                </Button>
+                                            </Grid>
+                                        </CardContent>
+                                    </Card>
+                                </Grid >
+                            </>
+                        ))}
+                    </Grid>}
             </div>
 
             <footer>
@@ -369,7 +372,7 @@ const EcommerceHome = () => {
                         </div>
                         <div class="footer-section contact">
                             <h2>Contact Us</h2>
-                            <p>Email: example@example.com</p>
+                            <p>Email: sriyaanconnect@gmail.com</p>
                             <p>Call : 08069857329</p>
                         </div>
                     </div>

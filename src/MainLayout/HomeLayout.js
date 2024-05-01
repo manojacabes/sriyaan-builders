@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { styled } from '@mui/system';
-import { Container, Typography, Button } from '@mui/material';
-import BackgroundImage from '../Images/black-friday-elements-assortment.jpg'
+import { Container, Grid, Typography, Button } from '@mui/material';
+import BackgroundImage from '../Images/offerBanner.jpg'
 
 const useStyles = styled((theme) => ({
     root: {
@@ -42,12 +42,65 @@ const EcommerceHome = () => {
                 {/* <Typography variant="h1" className={classes.title}>
                     Welcome to Our Online Store
                 </Typography> */}
-                <Typography variant="subtitle1" className={classes.subtitle}>
+                <div className='data1'>
+                    <div style={{
+                        fontSize: '25px',
+                        width: '50%',
+                        fontFamily: 'Poppins'
+                    }}>
+                        "When you undervalue what you do, the world will undervalue who you are." –Oprah Winfrey
+                    </div>
+                </div>
+                {/* <Grid>
+                    <Grid>
+                        <Grid></Grid>
+                    </Grid>
+                    <Grid>
+                        <img src={BackgroundImage} alt='112x' />
+                    </Grid>
+                </Grid> */}
+                <Typography variant="subtitle1" className={classes.subtitle} style={{
+                    padding: '15px',
+                    fontWeight: '600',
+                    display: 'flex',
+                    justifyContent: 'center'
+                }}>
+                    Our Contact details and infos
+                </Typography>
+                <Typography variant="subtitle1" className={classes.subtitle} style={{
+                    padding: '30px',
+                    display: 'flex',
+                    justifyContent: 'center'
+                }}>
                     Sriyyan Industries - Manufacturer of gym stand, laser cutting services & sheet metal fabrication in Salem, Tamil Nadu.
                 </Typography>
-                <Button variant="contained" color="primary" className={classes.exploreButton}>
+                <Typography variant="subtitle1" className={classes.subtitle} style={{
+                    padding: '15px',
+                    fontWeight: '600',
+                    display: 'flex',
+                    justifyContent: 'center'
+                }}>
+                    Our Services and sections
+                </Typography>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    {/* <h2>Quick Links</h2> */}
+                    <ul style={{ listStyle: 'none', display: 'flex' }}>
+                        <li style={{ padding: '12px' }}><a href="#">Home</a></li>
+                        <li style={{ padding: '12px' }}><a href="/requite">Join Our Team</a></li>
+                        <li style={{ padding: '12px' }}><a href="/orders">My Orders</a></li>
+                        <li style={{ padding: '12px' }}><a href="/about">About Us</a></li>
+                    </ul>
+                </div>
+                <Typography variant="subtitle1" className={classes.subtitle} style={{
+                    padding: '15px',
+                    display: 'flex',
+                    justifyContent: 'center'
+                }}>
+                   Some more data will update soon...
+                </Typography>
+                {/* <Button variant="contained" color="primary" className={classes.exploreButton}>
                     Explore Now
-                </Button>
+                </Button> */}
             </Container>
         </div>
     );
