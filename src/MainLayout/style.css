@@ -5,6 +5,48 @@
     color: '#333';
 }
 
+.container123 {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    font-family: ui-monospace;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table td,
+table th {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+.activity-link {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.activity-link:hover {
+    text-decoration: underline;
+}
+
 .topTab {
     display: flex;
     flex-direction: row;
@@ -182,6 +224,7 @@ body {
     } */
 
 }
+
 .data1 {
     background: url('../Images/offerBanner.jpg');
     color: white;
@@ -198,6 +241,31 @@ body {
 
 
 }
+
+.data12 {
+    background: #d7ddee;
+    padding: 20px;
+    margin: 79px 20px 20px 20px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #4e4a4a;
+    font-family: 'Poppins';
+
+}
+
+.data123 {
+    background: #d7ddee;
+    padding: 38px;
+    margin: 33px 20px 20px 20px;
+    border-radius: 20px;
+    text-align: start;
+    font-size: 15px;
+    color: #4e4a4a;
+    font-family: 'Poppins';
+
+}
+
 .cardMedia {
     padding-top: '75%';
 }
