@@ -22,7 +22,7 @@ const CompanyDetails = () => {
             <p>Website: <a href="/home">Click here to add</a></p>
             <h3>Address:</h3>
             <p>{address}</p>
-            <div style={{ height: '300px', width: '100%' }}>
+            {/* <div style={{ height: '300px', width: '100%' }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: apiKey }}
                     defaultCenter={coordinates}
@@ -34,7 +34,7 @@ const CompanyDetails = () => {
                         text="SRIYAAN INDUSTRIES PRIVATE LIMITED"
                     />
                 </GoogleMapReact>
-            </div>
+            </div> */}
         </div>
     );
 };

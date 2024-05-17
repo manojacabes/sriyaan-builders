@@ -74,10 +74,12 @@ const Layout = ({ children }) => {
     const handleDrawerClose = () => {
         setOpenDrawer(false);
     };
-
     React.useEffect(() => {
         setPath(window.location.pathname)
     }, [path])
+    const handleCloseData = () => {
+        navigate('/', {});
+    }
     console.log(path, 'window')
     const tabs = [
         { key: 0, name: '/home', label: 'Home', active: activeIndex === 0 ? true : false, icon: <HomeIcon /> },
@@ -133,6 +135,10 @@ const Layout = ({ children }) => {
                             textShadow: '0 0 10px #dcdd2f'
                         } : {}}>About Us</a>
                 </div>
+                <button onClick={() => handleCloseData()} style={{
+                    background: '#ff000000',
+                    color: 'red'
+                }}>Logout</button>
                 <div class="search">
                     <input type="text" placeholder="  Enter Here . . ." />
                     <button>Search</button>
