@@ -21,14 +21,18 @@
     --font-medium: 500;
     --font-semi-bold: 600;
 }
+
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: hide scrollbar track */
+    width: 0;
+    /* Remove scrollbar space */
+    background: transparent;
+    /* Optional: hide scrollbar track */
 }
+
 .container {
     width: 100vw !important;
     height: 100vh !important;
-    background: url('../Images/t1.jpg');
+    background: url('../Images/tech5.jpg');
     background-color: #ff7e5f;
     color: white;
     max-width: none !important;
@@ -64,6 +68,30 @@ body {
     background-color: #fff;
     font-family: var(--body-font);
     color: var(--text-color);
+}
+
+.input1 {
+    width: 100%;
+    background: white;
+    border: none;
+    padding: 15px 3px;
+    border-radius: 20px;
+    margin-top: 15px;
+    box-shadow: #aab4b9 0px 10px 10px -5px;
+    border-inline: 2px solid transparent;
+}
+
+.input1::-moz-placeholder {
+    color: rgb(170, 170, 170);
+}
+
+.input1::placeholder {
+    color: rgb(170, 170, 170);
+}
+
+.input1:focus {
+    outline: none;
+    border-inline: 3px solid #b58f51;
 }
 
 input,
@@ -111,13 +139,15 @@ img {
 }
 
 .login__title {
-    color: var(--title-color);
-    font-size: var(--h2-font-size);
+    color: #cac9b5;
+    font-size: xx-large;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
+
 }
 
 .login__title span {
-    color: var(--first-color);
+    color: #b58f51;
 }
 
 .login__description {
@@ -218,11 +248,11 @@ img {
     width: 100%;
     padding: 14px 2rem !important;
     border-radius: 6px !important;
-    background: linear-gradient(180deg, var(--first-color), var(--second-color));
+    background: linear-gradient(180deg, #bd914d, #bd914d);
     color: #fff;
     font-size: var(--small-font-size) !important;
     font-weight: var(--font-semi-bold) !important;
-    box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5) !important;
+    /* box-shadow: 0 6px 24px hsla(244, 75%, 48%, 0.5) !important; */
     margin-bottom: 1rem !important;
     cursor: pointer !important;
 }

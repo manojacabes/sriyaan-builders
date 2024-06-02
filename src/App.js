@@ -11,7 +11,9 @@ import MultiStepForm from './MainLayout/JobApply';
 import MyOrders from './MainLayout/MyOrders/MyOrder'
 import Homelayout from './MainLayout/HomeLayout';
 import LayoutComponent from './MainLayout/layout';
+import Dashboard from './Dashboard/Dashboard'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import DashboardApp from './Dashboard/dummyCheck';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -70,6 +72,16 @@ const App = () => {
                   <Route index element={<Home />} />
                 </Routes>
               </LayoutComponent>}
+              />
+              <Route path="/dashboard" element={
+                <Routes>
+                  <Route index element={<Dashboard />} />
+                </Routes>}
+              />
+              <Route path="/dashboard-app" element={
+                <Routes>
+                  <Route index element={<DashboardApp />} />
+                </Routes>}
               />
               <Route path="/requite" element={<LayoutComponent>
                 <Routes>

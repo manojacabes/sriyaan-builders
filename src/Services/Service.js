@@ -121,3 +121,101 @@ export const postPlaceOrder = async (url, body) => {
         throw error;
     }
 };
+export const postJobData = async (url, body) => {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                "accept": "*/*",
+                "password": "test@123456",
+                "uniqueInteractionId": "ewewe",
+                "user-name": "test_admin",
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error posting data:', error);
+        throw error;
+    }
+};
+export const putJobData = async (url, body) => {
+    try {
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                "accept": "*/*",
+                "password": "test@123456",
+                "uniqueInteractionId": "ewewe",
+                "user-name": "test_admin",
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error posting data:', error);
+        throw error;
+    }
+};
+export const deleteJobData = async (url) => {
+    try {
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                "accept": "*/*",
+                "password": "test@123456",
+                "uniqueInteractionId": "ewewe",
+                "user-name": "test_admin",
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error posting data:', error);
+        throw error;
+    }
+};
+export const getJobList = async (url) => {
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "accept": "*/*",
+                "password": "test@123456",
+                "uniqueInteractionId": "ewewe",
+                "user-name": "test_admin",
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error posting data:', error);
+        throw error;
+    }
+};

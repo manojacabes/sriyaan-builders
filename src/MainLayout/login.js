@@ -64,7 +64,7 @@ const LoginScreen = () => {
                     console.log('Response from POST request:', response);
                     localStorage.setItem('user', email);
                     if (response?.response === 'SUCCESS') {
-                        navigate('/home', { state: { response: response } });
+                        navigate('/dashboard', { state: { response: response } });
                         enqueueSnackbar(response?.response, { variant: 'success' })
                     } else {
                         enqueueSnackbar(response?.response, { variant: 'warning' })
@@ -129,25 +129,25 @@ const LoginScreen = () => {
             <Grid>
                 <Grid className="login__inputs">
                     <Grid>
-                        <label htmlFor="input-email" className="login__label">Email</label>
-                        <input type="email" value={email} name="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email address" required className="login__input" id="input-email" />
+                        {/* <label htmlFor="input-email" className="login__label">Email</label> */}
+                        <input type="email" value={email} name="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email address" required className="input1" id="input-email" />
                     </Grid>
 
                     <Grid>
-                        <label htmlFor="input-pass" className="login__label">Password</label>
+                        {/* <label htmlFor="input-pass" className="login__label">Password</label> */}
 
                         <Grid className="login__box">
                             <input type="password" name="password" value={password}
-                                onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required className="login__input" id="input-pass" />
+                                onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required className="input1" id="input-pass" />
                             <i className="ri-eye-off-line login__eye" id="input-icon"></i>
                         </Grid>
                     </Grid>
                 </Grid>
 
-                <Grid className="login__check">
+                {/* <Grid className="login__check">
                     <input type="checkbox" className="login__check-input" id="input-check" />
                     <label htmlFor="input-check" className="login__check-label">Remember me</label>
-                </Grid>
+                </Grid> */}
             </Grid>
         )
     }
@@ -185,68 +185,7 @@ const LoginScreen = () => {
         )
     }
     return (
-        // <Container style={{
-        //     height: '100vh',
-        //     width: '100vw'
-        // }} component="main" maxWidth="xs">
-        //     <Grid style={{
-        //         display: 'flex',
-        //         flexDirection: 'column',
-        //         alignItems: 'center',
-        //         marginTop: 8,
-        //     }}>
-        //         <Typography component="h1" variant="h5">
-        //             Sign in
-        //         </Typography>
-        //         <form style={{
-        //             width: '100%',
-        //             marginTop: 1
-        //         }} onSubmit={handleLogin}>
-        //             <TextField
-        //                 variant="outlined"
-        //                 margin="normal"
-        //                 required
-        //                 fullWidth
-        //                 id="email"
-        //                 label="Email Address"
-        //                 name="email"
-        //                 autoComplete="email"
-        //                 autoFocus
-        //                 value={email}
-        //                 onChange={(e) => setEmail(e.target.value)}
-        //             />
-        //             <TextField
-        //                 variant="outlined"
-        //                 margin="normal"
-        //                 required
-        //                 fullWidth
-        //                 name="password"
-        //                 label="Password"
-        //                 type="password"
-        //                 id="password"
-        //                 autoComplete="current-password"
-        //                 value={password}
-        //                 onChange={(e) => setPassword(e.target.value)}
-        //             />
-        //             <Button
-        //                 type="submit"
-        //                 fullWidth
-        //                 variant="contained"
-        //                 color="primary"
-        //                 style={{ margin: '3px, 0px, 2px' }}
-        //             >
-        //                 Sign In
-        //             </Button>
-        //             <Grid container justifyContent="flex-end">
-        //                 <Grid item>
-        //                     <Link href="#" variant="body2" onClick={handleSignUp}>
-        //                         Don't have an account? Sign up
-        //                     </Link>
-        //                 </Grid>
-        //             </Grid>
-        //         </form>
-        //     </Grid>
-        // </Container>
+
         <Grid className="container" >
             <Grid className="login__content">
                 {/* <img src={backgrd} alt="login image" className="login__img" /> */}
@@ -254,11 +193,11 @@ const LoginScreen = () => {
                 <form action="" className="login__form" >
                     <Grid>
                         <h1 className="login__title">
-                            <span>Welcome</span> Back
+                            <span>Sign</span> In
                         </h1>
-                        <p className="login__description">
+                        {/* <p className="login__description">
                             Welcome! Please login to continue.
-                        </p>
+                        </p> */}
                     </Grid>
 
                     {/* <Grid>
@@ -289,10 +228,10 @@ const LoginScreen = () => {
                     <Grid>
                         <Grid className="login__buttons">
                             <Button className="login__button" style={{ color: '#ffffff' }} onClick={() => handleLogin()} >Log In</Button>
-                            <Button className="login__button login__button-ghost" onClick={handleSignUp}>Sign Up</Button>
+                            {/* <Button className="login__button login__button-ghost" onClick={handleSignUp}>Sign Up</Button> */}
                         </Grid>
 
-                        <a href="#" className="login__forgot">Forgot Password?</a>
+                        {/* <a href="#" className="login__forgot">Forgot Password?</a> */}
                     </Grid>
                 </form>
             </Grid>
